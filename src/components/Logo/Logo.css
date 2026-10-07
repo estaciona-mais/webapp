@@ -1,0 +1,10 @@
+.logo{
+    font-size: inherit;
+    color: var(--texto);
+    font-family: var(--fonte-logo);
+}
+
+.logo__mais{
+    color: var(--destaque);
+}
+
