@@ -1,0 +1,18 @@
+:root { 
+    --texto: #121316;
+    --fundo: #E4E4E4;
+    --primaria: #4DC552;
+    --secundaria: #a6d8ab;
+    --destaque: #F0A857;
+    
+    --fonte-ui:'Montserrat', sans-serif;
+    --fonte-logo: 'Ubuntu', sans-serif;
+    
+    --raio: 18px;
+}
+
+[data-theme="dark"] {
+    --texto: #E4E4E4;
+    --fundo: #121316;
+    --primaria: #70E673;
+}

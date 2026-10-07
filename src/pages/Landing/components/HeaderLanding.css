@@ -1,0 +1,58 @@
+.cabecalho{
+    padding: 20px 157px;
+    background-color: var(--fundo);
+}
+
+.cabecalho__faixa{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1057px;
+}
+
+.header-landing__logo{
+    font-size: 48px;
+    margin-right: 50px;
+}
+
+.navbar__landing{
+    display: flex;
+    gap: 100px;
+    align-items: center;
+}
+
+.navbar__landing a{
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--texto);
+    font-family: var(--fonte-ui);
+    font-size: 14px;
+    line-height: 28px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar__landing a:hover{
+    color: var(--destaque);
+}
+
+.btn__conta{
+    display: flex;
+    gap: 30px;
+}
+
+.btn.btn__entrar{
+    background-color: transparent;
+}
+
+.btn__texto{
+    flex: 1;
+    text-align: center;
+}
+
+.btn.btn__entrar:hover{
+    color: var(--destaque);
+}
+
+.btn.btn__cadastro:hover{
+    color: var(--fundo);
+}
