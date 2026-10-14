@@ -1,5 +1,6 @@
 import SelecionarPlano from "../../../components/SelecionarPlano/SelecionarPlano"
 import { ShoppingCart, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom'
 
 import "./AreaCheckout.css"
 
@@ -20,7 +21,7 @@ export default function AreaCheckout() {
                     </div>
                 </div>
                 <div className="checkout__final">
-                    <button className="btn checkout__btn">Checkout <span className="shopping__checkout"><ShoppingCart size={48}/></span></button>
+                    <Link to="/cadastro" className="btn checkout__btn">Checkout <span className="shopping__checkout"><ShoppingCart size={48}/></span></Link>
                 </div>
             </div>
         </div>

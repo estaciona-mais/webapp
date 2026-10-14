@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Landing from './pages/Landing/Landing'
+import Cadastro from './pages/Cadastro/Cadastro'
+import Login from './pages/Login/Login'
 
 function App() {
   // const [tema, setTema] = useState(() => {
@@ -26,6 +28,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   )
