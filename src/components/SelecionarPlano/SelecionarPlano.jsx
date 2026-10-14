@@ -7,7 +7,7 @@ const planos = [
     { id: "anual", valor: 359.99, titulo: "Anual"}
 ]
 
-export default function SelecionarPlano(){
+export default function SelecionarPlano({onChange}){
 
     const[ plano, setPlano ] = useState(() => {
             let planoSalvo = null
@@ -39,10 +39,12 @@ export default function SelecionarPlano(){
         } catch (error) {
             // storage indisponivel
         }
+
+        onChange?.({target:{name: 'plano', value: plano}})
     }, [plano])
 
     return (
-        <select value={plano} onChange={alterarPlano}>
+        <select name="plano" value={plano} onChange={alterarPlano}>
             {planos.map((p) => {
                 return(
                     <option key={p.id} value={p.id}>

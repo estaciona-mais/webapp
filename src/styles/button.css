@@ -12,6 +12,7 @@
     background-color: var(--primaria);
     font-family: var(--fonte-ui);
     color: var(--texto);
+    text-decoration: none;
     transition: color 0.3s ease-in-out;
 }
 
