@@ -1,22 +1,22 @@
-.banner{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 160px;
-    background-color: var(--texto);
-    color: var(--fundo);
-    font-family: var(--fonte-ui);
-    font-size: 12px;
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 160px;
+  background-color: var(--texto);
+  color: var(--fundo);
+  font-family: var(--fonte-ui);
+  font-size: 12px;
 }
 
-.nav__banner a{
-    padding: 16px;
-    text-decoration: none;
-    color: var(--fundo);
-    font-family: var(--fonte-ui);
-    transition: color 0.3s ease-in-out;
+.nav__banner a {
+  padding: 16px;
+  text-decoration: none;
+  color: var(--fundo);
+  font-family: var(--fonte-ui);
+  transition: color 0.3s ease-in-out;
 }
 
 .nav__banner a:hover {
-    color: var(--destaque);
+  color: var(--destaque);
 }

@@ -1,125 +1,127 @@
-body{
-    background-color: var(--fundo);
+body {
+  background-color: var(--fundo);
 }
 
-.container__main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 120px 170px;
+.container__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 170px;
 }
 
-.container__conta{
-    display: flex;
-    background-color: #FFFFFF;
-    border-radius: var(--raio);
-    padding: 28px;
+.container__conta {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: var(--raio);
+  padding: 28px;
 }
 
-.container__conta form{
-    display: flex;
-    flex-direction: column;
-    border-radius: var(--raio);
-    border: 2px solid var(--primaria);
-    padding: 43px 24px 19px;
-    width: 460px;
+.container__conta form {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--raio);
+  border: 2px solid var(--primaria);
+  padding: 43px 24px 19px;
+  width: 460px;
 }
 
-.form__label{
-    font-family: var(--fonte-ui);
-    font-size: 10px;
-    font-weight: 500;
-    padding: 15px 0px 8px 0px;
-    margin-left: 4px;
+.form__label {
+  font-family: var(--fonte-ui);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 15px 0px 8px 0px;
+  margin-left: 4px;
 }
 
-.form__input{
-    border: 1px solid var(--primaria);
-    border-radius: var(--raio);
-    width: 100%;
-    padding: 10px 12px;
-    transition: border-color 0.3s ease;
-    font-size: 10px;
-    font-family: var(--fonte-ui);
+.form__input {
+  border: 1px solid var(--primaria);
+  border-radius: var(--raio);
+  width: 100%;
+  padding: 10px 12px;
+  transition: border-color 0.3s ease;
+  font-size: 10px;
+  font-family: var(--fonte-ui);
 }
 
-.form__input:focus{
-    border-color: var(--destaque);
-    outline: none;
+.form__input:focus {
+  border-color: var(--destaque);
+  outline: none;
 }
 
-.container__logo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-right: 60px;
+.container__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 60px;
 }
 
-.logo__texto{
-    font-size: 48px;
-    margin-top: 56px;
-    padding-bottom: 40px;
+.logo__texto {
+  font-size: 48px;
+  margin-top: 56px;
+  padding-bottom: 40px;
 }
 
-.logo__subtitulo{
-    font-size: 60px;
-    font-family: var(--fonte-ui);
-    text-align: center;
+.logo__subtitulo {
+  font-size: 60px;
+  font-family: var(--fonte-ui);
+  text-align: center;
 }
 
-.form__selector.selector select{
-    padding: 7px 36px 7px 10px;   
-    font-size: 22px;
-    background-color: #FFFFFF;
+.form__selector.selector select {
+  padding: 7px 36px 7px 10px;
+  font-size: 22px;
+  background-color: #ffffff;
 }
 
-.btn.btn__submit{
-    margin-top: 14px;
-    border: 1px solid var(--primaria);
-    width: 100%;
-    justify-content: center;
-    padding: 12px 20px;
-    font-weight: lighter;
-    background-color: transparent;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+.btn.btn__submit {
+  margin-top: 14px;
+  border: 1px solid var(--primaria);
+  width: 100%;
+  justify-content: center;
+  padding: 12px 20px;
+  font-weight: lighter;
+  background-color: transparent;
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
 }
 
-.btn.btn__submit:hover{
-    background-color: var(--primaria);
-    color: var(--fundo);
+.btn.btn__submit:hover {
+  background-color: var(--primaria);
+  color: var(--fundo);
 }
 
-.nav__cadastro{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--fundo);
-    color: var(--fundo);
-    font-family: var(--fonte-ui);
-    font-size: 16px;
-    width: 100%;
+.nav__cadastro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--fundo);
+  color: var(--fundo);
+  font-family: var(--fonte-ui);
+  font-size: 16px;
+  width: 100%;
 }
 
-.nav__cadastro a{
-    padding: 16px;
-    text-decoration: none;
-    color: var(--texto);
-    font-family: var(--fonte-ui);
-    transition: color 0.3s ease-in-out;
+.nav__cadastro a {
+  padding: 16px;
+  text-decoration: none;
+  color: var(--texto);
+  font-family: var(--fonte-ui);
+  transition: color 0.3s ease-in-out;
 }
 
 .nav__cadastro a:hover {
-    color: var(--destaque);
+  color: var(--destaque);
 }
 
-.aviso{
-    font-size: 12px;
-    font-family: var(--fonte-ui);
-    padding-top: 15px;
-    text-align: center;
-    color: var(--erro);
+.aviso {
+  font-size: 12px;
+  font-family: var(--fonte-ui);
+  padding-top: 15px;
+  text-align: center;
+  color: var(--erro);
 }
 
-.logo__forms{
-    text-decoration: none;
+.logo__forms {
+  text-decoration: none;
 }

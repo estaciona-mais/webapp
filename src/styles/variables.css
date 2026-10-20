@@ -1,19 +1,19 @@
-:root { 
-    --texto: #121316;
-    --fundo: #E4E4E4;
-    --primaria: #4DC552;
-    --secundaria: #a6d8ab;
-    --destaque: #F0A857;
-    --erro: #dc143c;
-    
-    --fonte-ui:'Montserrat', sans-serif;
-    --fonte-logo: 'Ubuntu', sans-serif;
-    
-    --raio: 18px;
+:root {
+  --texto: #121316;
+  --fundo: #e4e4e4;
+  --primaria: #4dc552;
+  --secundaria: #a6d8ab;
+  --destaque: #f0a857;
+  --erro: #dc143c;
+
+  --fonte-ui: "Montserrat", sans-serif;
+  --fonte-logo: "Ubuntu", sans-serif;
+
+  --raio: 18px;
 }
 
 [data-theme="dark"] {
-    --texto: #E4E4E4;
-    --fundo: #121316;
-    --primaria: #70E673;
+  --texto: #e4e4e4;
+  --fundo: #121316;
+  --primaria: #70e673;
 }

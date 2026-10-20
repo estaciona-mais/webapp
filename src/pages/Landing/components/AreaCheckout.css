@@ -1,60 +1,60 @@
-.area__checkout{
-    margin: auto 157px 68px;
-    background-color: var(--fundo);
-    border-radius: var(--raio);
+.area__checkout {
+  margin: auto 157px 68px;
+  background-color: var(--fundo);
+  border-radius: var(--raio);
 }
 
-.area__data{
-    display: flex;
-    align-items: flex-start;
-    text-align: center;
-    flex-direction: row;
-    padding: 15px 0px 21px;
-    gap: 37px;
+.area__data {
+  display: flex;
+  align-items: flex-start;
+  text-align: center;
+  flex-direction: row;
+  padding: 15px 0px 21px;
+  gap: 37px;
 }
 
-.vagas__checkout{
-    width: 255px;
-    text-align: center;
+.vagas__checkout {
+  width: 255px;
+  text-align: center;
 }
 
-.vagas__texto{
-    font-size: 16px;
-    font-family: var(--fonte-logo);
-    color: var(--texto);
+.vagas__texto {
+  font-size: 16px;
+  font-family: var(--fonte-logo);
+  color: var(--texto);
 }
 
-.vagas__display{
-    font-size: 50px;
-    font-family: var(--fonte-logo);
-    color: var(--primaria);
-    padding-top: 3px;
+.vagas__display {
+  font-size: 50px;
+  font-family: var(--fonte-logo);
+  color: var(--primaria);
+  padding-top: 3px;
 }
 
-.selecionar__plano{
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    width: 414px;
+.selecionar__plano {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 414px;
 }
 
-.checkout__final{
-    margin-top: 13px;
+.checkout__final {
+  margin-top: 13px;
 }
 
-.btn.checkout__btn{
-    width: 266px;
-    height: 75px;
-    padding: 10px 15px 10px 40px;
-    color: var(--fundo);
-    font-size: 28px;
-    font-family: var(--fonte-logo);
+.btn.checkout__btn {
+  width: 266px;
+  height: 75px;
+  padding: 10px 15px 10px 40px;
+  color: var(--fundo);
+  font-size: 28px;
+  font-family: var(--fonte-logo);
 }
 
-.shopping__checkout{
-    transition: color 0.3s ease-in-out;
+.shopping__checkout {
+  transition: color 0.3s ease-in-out;
 }
 
-.btn.checkout__btn:hover .shopping__checkout{
-    color: var(--destaque);
+.btn.checkout__btn:hover .shopping__checkout {
+  color: var(--destaque);
 }

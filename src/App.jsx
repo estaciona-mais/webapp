@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Landing from './pages/Landing/Landing'
-import Cadastro from './pages/Cadastro/Cadastro'
-import Login from './pages/Login/Login'
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing/Landing";
+import Cadastro from "./pages/Cadastro/Cadastro";
+import Login from "./pages/Login/Login";
 
 function App() {
   // const [tema, setTema] = useState(() => {
@@ -18,7 +18,7 @@ function App() {
   // function mudarTema() {
   //   setTema(t => (t === 'light' ? 'dark' : 'light'))
   // }
-  
+
   // useEffect(() => {
   //   document.documentElement.setAttribute('data-theme', tema)
   //   localStorage.setItem('tema', tema)
@@ -32,7 +32,7 @@ function App() {
         <Route path="/login" element={<Login />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
