@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import {
   loginComApi as authLogin,
+  loginComGoogle as authLoginGoogle,
   logout as authLogout,
 } from "../services/api/auth";
 
@@ -31,13 +32,16 @@ const AuthProvider = ({ children }) => {
   const login = async (email, senha) =>
     iniciarSessao(await authLogin(email, senha));
 
+  const loginComGoogle = async (credential) =>
+    iniciarSessao(await authLoginGoogle(credential));
+
   const logout = () => {
     authLogout();
     setUsuario(null);
   };
 
   return (
-    <AuthContext.Provider value={{ usuario, login, logout }}>
+    <AuthContext.Provider value={{ usuario, login, loginComGoogle, logout }}>
       {children}
     </AuthContext.Provider>
   );

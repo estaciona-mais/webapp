@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import AreaForms from "../../components/AreaForms/AreaForms";
 import { useAuth } from "../../contexts/AuthContext";
 import { ArrowRight } from "lucide-react";
+import { GoogleLogin } from "@react-oauth/google";
+
 import "./Login.css";
 
 export default function Login() {
@@ -10,7 +12,7 @@ export default function Login() {
   const [dados, setDados] = useState(dadosEsperados);
   const [aviso, setAviso] = useState("");
 
-  const { login } = useAuth();
+  const { login, loginComGoogle } = useAuth();
   const navigate = useNavigate();
 
   function atualizarCampos(e) {
@@ -26,6 +28,15 @@ export default function Login() {
       navigate("/dashboard");
     } catch (erro) {
       setAviso(erro.message);
+    }
+  }
+
+  async function aoEntrarComGoogle(res) {
+    try {
+      await loginComGoogle(res.credential);
+      navigate("/dashboard");
+    } catch (err) {
+      setAviso(err.message);
     }
   }
 
@@ -77,6 +88,14 @@ export default function Login() {
         <button type="submit" className="btn btn__submit">
           Confirmar e Fazer Login <ArrowRight size={20} />
         </button>
+
+        <div className="form__login__outros-logins">
+          <p>ou</p>
+          <GoogleLogin
+            onSuccess={aoEntrarComGoogle}
+            onError={() => setAviso("O login com o Google foi interrompido.")}
+          />
+        </div>
       </form>
     </AreaForms>
   );
