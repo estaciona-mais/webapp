@@ -8,7 +8,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import "./Login.css";
 
 export default function Login() {
-  const dadosEsperados = { email: "teste@mail.com", senha: "testeeeeee" };
+  const dadosEsperados = { email: "", senha: "" };
   const [dados, setDados] = useState(dadosEsperados);
   const [aviso, setAviso] = useState("");
 
