@@ -7,12 +7,13 @@ import AreaForms from "#components/AreaForms/AreaForms";
 import { cadastrarVeiculo } from "#services/api/veiculos";
 import { tituloParaCampoEnum } from "#misc/utils";
 import { iniciarCheckout } from "#services/api/assinaturas";
+import { dadosIniciaisCliente, dadosIniciaisVeiculo } from "#misc/debug";
 
 export default function Cadastro() {
   // TODO: substituir número por componente
   const [etapa, setEtapa] = useState(1);
-  const [dadosUsuario, setDadosUsuario] = useState(null);
-  const [dadosVeiculo, setDadosVeiculo] = useState(null);
+  const [dadosUsuario, setDadosUsuario] = useState(dadosIniciaisCliente);
+  const [dadosVeiculo, setDadosVeiculo] = useState(dadosIniciaisVeiculo);
 
   const { cadastrarClienteApi, cadastrarClienteGoogle } = useAuth();
 

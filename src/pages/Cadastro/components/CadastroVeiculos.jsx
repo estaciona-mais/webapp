@@ -3,22 +3,12 @@ import { ChevronDown, ArrowRight, ArrowLeft } from "lucide-react";
 import { listarCores, listarTipos } from "#services/api/veiculos";
 import { gerarPlacaDeVeiculo } from "#misc/utils";
 
-const dadosEsperados = {
-  tipo: "Carro",
-  cor: "Preto",
-  fabricante: "Toyota",
-  modelo: "Corolla",
-  placa: gerarPlacaDeVeiculo(),
-  ano: 2008,
-  observacao: "",
-};
-
 export default function CadastroVeiculos({
   dadosIniciais,
   onConcluir,
   onVoltar,
 }) {
-  const [dados, setDados] = useState(dadosIniciais || dadosEsperados);
+  const [dados, setDados] = useState(dadosIniciais);
   const [cores, setCores] = useState([]);
   const [tipos, setTipos] = useState([]);
 

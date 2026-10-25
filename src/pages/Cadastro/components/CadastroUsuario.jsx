@@ -4,19 +4,8 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 import { GoogleLogin } from "@react-oauth/google";
 import { loginComGoogle } from "#services/api/auth.js";
 
-const dadosEsperados = {
-  nome: "Usuário Teste",
-  email: `teste${Math.floor(Math.random() * 382749)}@mail.com`,
-  senha: "testeteste",
-  confirmarSenha: "testeteste",
-  plano: 3,
-  provider: "LOCAL",
-  providerId: "",
-  credential: "",
-};
-
 export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
-  const [dados, setDados] = useState(dadosIniciais || dadosEsperados);
+  const [dados, setDados] = useState(dadosIniciais);
   const [aviso, setAviso] = useState("");
 
   function atualizarCampos(e) {

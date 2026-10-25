@@ -38,10 +38,15 @@ const gerarPlacaDeVeiculo = () => {
   return ls.slice(0, 3).join("") + ns[0] + ls[3] + ns.slice(1, 3).join("");
 };
 
+const DEBUG_MODE =
+  ["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname) &&
+  localStorage.getItem("DEBUG_MODE");
+
 export {
   normalizarString,
   campoEnumParaTitulo,
   enumParaObjeto,
   tituloParaCampoEnum,
   gerarPlacaDeVeiculo,
+  DEBUG_MODE,
 };
