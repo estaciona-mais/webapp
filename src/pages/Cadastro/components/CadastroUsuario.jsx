@@ -1,13 +1,18 @@
 import { useState } from "react";
 import SelecionarPlano from "../../../components/SelecionarPlano/SelecionarPlano";
 import { ChevronDown, ArrowRight } from "lucide-react";
+import { GoogleLogin } from "@react-oauth/google";
+import { loginComGoogle } from "../../../services/api/auth.js";
 
 const dadosEsperados = {
-  nome: "",
-  email: "",
-  senha: "",
-  confirmarSenha: "",
-  plano: "",
+  nome: "Usuário Teste",
+  email: `teste${Math.floor(Math.random() * 382749)}@mail.com`,
+  senha: "testeteste",
+  confirmarSenha: "testeteste",
+  plano: 3,
+  provider: "LOCAL",
+  providerId: "",
+  credential: "",
 };
 
 export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
@@ -32,7 +37,22 @@ export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
       setAviso(erro);
     } else {
       setAviso("");
-      onConcluir(dados);
+      onConcluir({ ...dados, provider: "LOCAL" });
+    }
+  }
+
+  async function aoEntrarComGoogle(res) {
+    try {
+      await loginComGoogle(res.credential);
+      setAviso("");
+      onConcluir({
+        ...dados,
+        provider: "GOOGLE",
+        credential: res.credential,
+        senha: null,
+      });
+    } catch (err) {
+      setAviso(err);
     }
   }
 
@@ -94,17 +114,24 @@ export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
         required
       />
 
+      {aviso && <p className="aviso">{aviso}</p>}
+
       <label className="form__label">Selecione seu Plano</label>
       <div className="form__selector selector">
         <SelecionarPlano value={dados.plano} onChange={atualizarCampos} />
         <ChevronDown className="selector__seta" size={22} />
       </div>
 
-      {aviso && <p className="aviso">{aviso}</p>}
-
       <button type="submit" className="btn btn__submit">
         Confirmar e Continuar <ArrowRight size={20} />
       </button>
+
+      <div className="form__google">
+        <GoogleLogin
+          onSuccess={aoEntrarComGoogle}
+          onError={() => setAviso("O login com Google foi interrompido.")}
+        />
+      </div>
     </form>
   );
 }

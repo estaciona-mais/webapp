@@ -3,6 +3,8 @@ import {
   loginComApi as authLogin,
   loginComGoogle as authLoginGoogle,
   logout as authLogout,
+  cadastrarClienteApi as authCadastroApi,
+  cadastrarClienteGoogle as authCadastroGoogle,
 } from "../services/api/auth";
 
 const AuthContext = createContext(null);
@@ -40,8 +42,29 @@ const AuthProvider = ({ children }) => {
     setUsuario(null);
   };
 
+  const cadastrarClienteApi = async (usuario) => {
+    const res = await authCadastroApi(usuario);
+    await login(usuario.email, usuario.senha);
+    return res;
+  };
+
+  const cadastrarClienteGoogle = async (usuario) => {
+    const res = await authCadastroGoogle(usuario);
+    await loginComGoogle(usuario.credential);
+    return res;
+  };
+
   return (
-    <AuthContext.Provider value={{ usuario, login, loginComGoogle, logout }}>
+    <AuthContext.Provider
+      value={{
+        usuario,
+        login,
+        loginComGoogle,
+        logout,
+        cadastrarClienteApi,
+        cadastrarClienteGoogle,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

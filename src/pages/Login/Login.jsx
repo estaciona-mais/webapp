@@ -93,7 +93,7 @@ export default function Login() {
           <p>ou</p>
           <GoogleLogin
             onSuccess={aoEntrarComGoogle}
-            onError={() => setAviso("O login com o Google foi interrompido.")}
+            onError={() => setAviso("O login com Google foi interrompido.")}
           />
         </div>
       </form>

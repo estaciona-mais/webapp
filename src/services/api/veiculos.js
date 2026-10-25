@@ -1,4 +1,5 @@
 import api from "./conn";
+import { enumParaObjeto } from "../../misc/utils";
 
 /**
  * Um objeto com dados de um veículo.
@@ -19,13 +20,19 @@ import api from "./conn";
  *
  * @returns {Veiculo[]} Lista de veículos.
  */
-const listar = async () => api.get("/api/veiculos");
+const listarVeiculos = async () => api.get("/api/veiculos");
+
+const listarCores = async () =>
+  api.get("/api/veiculos/cores", ({ data }) => enumParaObjeto(data));
+
+const listarTipos = async () =>
+  api.get("/api/veiculos/tipos", ({ data }) => enumParaObjeto(data));
 
 /**
  * Cadastra um veículo.
  *
  * @param {Veiculo} req - Informações do veículo a ser cadastrado.
  */
-const cadastrar = async (req) => api.post("/api/veiculos/cadastro", req);
+const cadastrarVeiculo = async (req) => api.post("/api/veiculos", req);
 
-export { listar, cadastrar };
+export { listarVeiculos, listarCores, listarTipos, cadastrarVeiculo };
