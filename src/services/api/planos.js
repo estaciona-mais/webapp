@@ -1,11 +1,13 @@
 import api from "./conn";
+import { campoEnumParaTitulo } from "../../misc/utils";
 
-const listar = async () =>
+const listarPlanos = async () =>
   await api.get("/api/planos", ({ data }) =>
     data.map((p) => ({
-      id: p.titulo.toLowerCase(),
+      id: p.id,
       valor: p.valor / 100,
-      titulo: p.titulo,
+      nome: p.titulo,
+      titulo: campoEnumParaTitulo(p.titulo),
     })),
   );
 
@@ -16,4 +18,4 @@ const buscarPlanoPorTitulo = async (titulo) =>
 //   await api
 //     .patch("/api/planos/atualizacao/valor", { titulo, novoValor });
 
-export { listar, buscarPlanoPorTitulo };
+export { listarPlanos, buscarPlanoPorTitulo };

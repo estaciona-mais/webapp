@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import Login from "./pages/Login/Login";
+import AssinaturaSucesso from "./pages/Assinatura/AssinaturaSucesso";
+import AssinaturaCancelada from "./pages/Assinatura/AssinaturaCancelada";
 
 function App() {
   // const [tema, setTema] = useState(() => {
@@ -30,6 +32,8 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/assinatura/sucesso" element={<AssinaturaSucesso />} />
+        <Route path="/assinatura/cancelada" element={<AssinaturaCancelada />} />
       </Routes>
     </>
   );

@@ -15,13 +15,8 @@ import api from "./conn";
  * @param {Date?} inicio - Início opcional do relatório.
  * @param {Date?} fim - Fim opcional do relatório.
  * @returns {RelatorioFinanceiro} Dados do relatório financeiro.
- *
- * @example
- * ```
- * Write me later.
- * ```
  */
-const gerarRelatorioFinanceiro = async (inicio, fim) =>
+const coletarRelatorioFinanceiro = async (inicio, fim) =>
   api.post("/api/financeiro/relatorio", { inicio, fim });
 
-export { gerarRelatorioFinanceiro };
+export { coletarRelatorioFinanceiro };
