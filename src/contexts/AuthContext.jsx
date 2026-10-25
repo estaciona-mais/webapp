@@ -5,7 +5,7 @@ import {
   logout as authLogout,
   cadastrarClienteApi as authCadastroApi,
   cadastrarClienteGoogle as authCadastroGoogle,
-} from "../services/api/auth";
+} from "#services/api/auth";
 
 const AuthContext = createContext(null);
 

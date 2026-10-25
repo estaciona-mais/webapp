@@ -3,6 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "imports": {
+    "#src/*": "./src/*",
+    "#components/*": "./src/components/*",
+    "#misc/*": "./src/misc/*",
+    "#contexts/*": "./src/contexts/*",
+    "#pages/*": "./src/pages/*",
+    "#services/*": "./src/services/*"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

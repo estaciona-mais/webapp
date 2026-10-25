@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useAuth } from "../../contexts/AuthContext.jsx";
-import CadastroUsuario from "./components/CadastroUsuario";
-import CadastroVeiculos from "./components/CadastroVeiculos";
-import AreaForms from "../../components/AreaForms/AreaForms";
+import { useAuth } from "#contexts/AuthContext.jsx";
+import CadastroUsuario from "#pages/Cadastro/components/CadastroUsuario";
+import CadastroVeiculos from "#pages/Cadastro/components/CadastroVeiculos";
+import AreaForms from "#components/AreaForms/AreaForms";
 
-import { cadastrarVeiculo } from "../../services/api/veiculos";
-import { tituloParaCampoEnum } from "../../misc/utils";
-import { iniciarCheckout } from "../../services/api/assinaturas";
+import { cadastrarVeiculo } from "#services/api/veiculos";
+import { tituloParaCampoEnum } from "#misc/utils";
+import { iniciarCheckout } from "#services/api/assinaturas";
 
 export default function Cadastro() {
   // TODO: substituir número por componente

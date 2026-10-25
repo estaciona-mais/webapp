@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { listarPlanos } from "../../services/api/planos";
+import { listarPlanos } from "#services/api/planos";
 import "./SelecionarPlano.css";
 
 /* TODO: SUBSTITUIR POR INFORMAÇÕES DA API */

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import SelecionarPlano from "../../../components/SelecionarPlano/SelecionarPlano";
+import SelecionarPlano from "#components/SelecionarPlano/SelecionarPlano";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { GoogleLogin } from "@react-oauth/google";
-import { loginComGoogle } from "../../../services/api/auth.js";
+import { loginComGoogle } from "#services/api/auth.js";
 
 const dadosEsperados = {
   nome: "Usuário Teste",

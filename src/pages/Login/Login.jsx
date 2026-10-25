@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AreaForms from "../../components/AreaForms/AreaForms";
-import { useAuth } from "../../contexts/AuthContext";
+import AreaForms from "#components/AreaForms/AreaForms";
+import { useAuth } from "#contexts/AuthContext";
 import { ArrowRight } from "lucide-react";
 import { GoogleLogin } from "@react-oauth/google";
 

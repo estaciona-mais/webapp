@@ -1,4 +1,4 @@
-import Logo from "../../../components/Logo/Logo";
+import Logo from "#components/Logo/Logo";
 import "./HeaderLanding.css";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
