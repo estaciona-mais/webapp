@@ -136,7 +136,6 @@ export default function CadastroVeiculos({
       <input
         className="form__input"
         placeholder="Adesivo no capô."
-        type="number"
         id="observacao"
         name="observacao"
         value={dados.observacao}
