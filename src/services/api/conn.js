@@ -43,7 +43,7 @@ const get = async (url, callback) =>
 const post = async (url, body, callback) =>
   await conn
     .post(url, body)
-    .then(callback ? callback(res) : ({ data }) => data);
+    .then((res) => (callback ? callback(res) : ({ data }) => data));
 
 const api = { get, post };
 
