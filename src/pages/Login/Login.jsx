@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AreaForms from "#components/AreaForms/AreaForms";
 import { useAuth } from "#contexts/AuthContext";
 import { ArrowRight } from "lucide-react";
-import { GoogleLogin } from "@react-oauth/google";
+import CadastroLoginGoogle from "#components/CadastroLoginGoogle/CadastroLoginGoogle.jsx";
 
 import "./Login.css";
 
@@ -89,13 +89,10 @@ export default function Login() {
           Confirmar e Fazer Login <ArrowRight size={20} />
         </button>
 
-        <div className="form__login__outros-logins">
-          <p>ou</p>
-          <GoogleLogin
-            onSuccess={aoEntrarComGoogle}
-            onError={() => setAviso("O login com Google foi interrompido.")}
-          />
-        </div>
+        <CadastroLoginGoogle
+          onSuccess={aoEntrarComGoogle}
+          onError={() => setAviso("O login com Google foi interrompido.")}
+        />
       </form>
     </AreaForms>
   );

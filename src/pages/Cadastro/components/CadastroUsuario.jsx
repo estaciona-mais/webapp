@@ -1,8 +1,12 @@
 import { useState } from "react";
 import SelecionarPlano from "#components/SelecionarPlano/SelecionarPlano";
 import { ChevronDown, ArrowRight } from "lucide-react";
-import { GoogleLogin } from "@react-oauth/google";
-import { loginComGoogle } from "#services/api/auth.js";
+import {
+  loginComGoogle,
+  cadastrarClienteGoogle,
+  buscarUsuarioGoogle,
+} from "#services/api/auth.js";
+import CadastroLoginGoogle from "#components/CadastroLoginGoogle/CadastroLoginGoogle.jsx";
 
 export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
   const [dados, setDados] = useState(dadosIniciais);
@@ -31,11 +35,23 @@ export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
   }
 
   async function aoEntrarComGoogle(res) {
+    const usuarioJaCadastrado = await buscarUsuarioGoogle(res.credential);
+    console.log("Cadastrado:", usuarioJaCadastrado);
+    if (usuarioJaCadastrado) {
+      setAviso(
+        "Usuário já cadastrado com Google. Por favor, realize seu login.",
+      );
+      return;
+    }
+
     try {
-      await loginComGoogle(res.credential);
+      const dadosLogin = await loginComGoogle(res.credential);
+      console.log("Dados de login:", dadosLogin);
+      setDados(dadosLogin);
       setAviso("");
       onConcluir({
-        ...dados,
+        ...dadosLogin,
+        plano: dados.plano,
         provider: "GOOGLE",
         credential: res.credential,
         senha: null,
@@ -115,12 +131,10 @@ export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
         Confirmar e Continuar <ArrowRight size={20} />
       </button>
 
-      <div className="form__google">
-        <GoogleLogin
-          onSuccess={aoEntrarComGoogle}
-          onError={() => setAviso("O login com Google foi interrompido.")}
-        />
-      </div>
+      <CadastroLoginGoogle
+        onSuccess={aoEntrarComGoogle}
+        onError={() => setAviso("O login com Google foi interrompido.")}
+      />
     </form>
   );
 }

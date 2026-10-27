@@ -53,10 +53,19 @@ export default function Cadastro() {
     });
 
     console.log("Plano:", usuario.plano);
-    await iniciarCheckout({ planoId: usuario.plano }).then(({ url }) => {
-      console.log("Checkout URL:", url);
-      return (window.location.href = url);
-    });
+    const checkoutResponse = await iniciarCheckout({ planoId: usuario.plano });
+    switch (checkoutResponse.codigoStatus) {
+      case 201:
+        console.log("Checkout URL:", checkoutResponse.url);
+        window.location.href = checkoutResponse.url;
+        break;
+      case 400:
+        // setAviso(checkoutResponse.mensagem);
+        alert(checkoutResponse.mensagem);
+        break;
+      default:
+        throw new Error("Código de resposta inválido.");
+    }
   }
 
   function concluirEtapaVeiculo(dados) {

@@ -16,7 +16,7 @@ const dadosIniciaisCliente = DEBUG_MODE
       email: "",
       senha: "",
       confirmarSenha: "",
-      plano: 1,
+      plano: localStorage.getItem("plano") ?? 1,
       provider: "LOCAL",
       providerId: "",
       credential: "",
