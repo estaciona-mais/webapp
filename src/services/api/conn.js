@@ -36,14 +36,14 @@ const get = async (url, callback) =>
  * Executa uma requisição POST através do axios.
  *
  * @param {string} url - URL da requisição.
- * @param {any} body - dados a serem enviados.
+ * @param {object} body - dados a serem enviados.
  * @param {function?} callback - função a ser executada após a chamada.
- * @returns any - Objeto de resposta da API.
+ * @returns {any} Objeto de resposta da API.
  */
 const post = async (url, body, callback) =>
   await conn
     .post(url, body)
-    .then((res) => (callback ? callback(res) : ({ data }) => data));
+    .then((res) => (callback ? callback(res) : res.data));
 
 const api = { get, post };
 
