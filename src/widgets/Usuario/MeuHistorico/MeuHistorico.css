@@ -1,0 +1,16 @@
+.historico__conteudo{
+    font-size: 22px;
+    line-height: 22px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.historico__selector.selector select{
+    font-size: 22px;
+    line-height: 22px;
+}
+
+.ultima__entrada, .ultima__saida{
+    padding-top: 15px;
+}

@@ -1,5 +1,5 @@
-body{
-    background-color: var(--fundo);
+body {
+  background-color: var(--fundo-main);
 }
 
 .container__main{
@@ -73,15 +73,18 @@ body{
     background-color: #FFFFFF;
 }
 
-.btn.btn__submit{
-    margin-top: 14px;
-    border: 1px solid var(--primaria);
-    width: 100%;
-    justify-content: center;
-    padding: 12px 20px;
-    font-weight: lighter;
-    background-color: transparent;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+.btn.btn__submit {
+  margin-top: 14px;
+  border: 1px solid var(--primaria);
+  width: 100%;
+  justify-content: center;
+  padding: 12px 20px;
+  font-weight: lighter;
+  background-color: transparent;
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+  margin-bottom: 10px;
 }
 
 .btn.btn__submit:hover{

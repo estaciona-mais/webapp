@@ -43,15 +43,23 @@ export default function SelecionarPlano({onChange}){
         onChange?.({target:{name: 'plano', value: plano}})
     }, [plano])
 
-    return (
-        <select name="plano" value={plano} onChange={alterarPlano}>
-            {planos.map((p) => {
-                return(
-                    <option key={p.id} value={p.id}>
-                        {p.titulo}
-                    </option>
-                )
-            })}
-        </select>
-    )
+        if (planoExistente) {
+          return planoExistente.id;
+        }
+
+        return defaultPlano;
+      });
+    }
+    coletarPlanos();
+  }, []);
+
+  return (
+    <select name="plano" value={plano} onChange={alterarPlano}>
+      {planos.map((p) => (
+        <option key={p.id} value={p.id}>
+          {p.titulo}
+        </option>
+      ))}
+    </select>
+  );
 }

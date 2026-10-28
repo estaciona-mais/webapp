@@ -1,7 +1,7 @@
-.area__checkout{
-    margin: auto 157px 68px;
-    background-color: var(--fundo);
-    border-radius: var(--raio);
+.area__checkout {
+  margin: auto 157px 68px;
+  background-color: var(--fundo-main);
+  border-radius: var(--raio);
 }
 
 .area__data{
@@ -42,13 +42,13 @@
     margin-top: 13px;
 }
 
-.btn.checkout__btn{
-    width: 266px;
-    height: 75px;
-    padding: 10px 15px 10px 40px;
-    color: var(--fundo);
-    font-size: 28px;
-    font-family: var(--fonte-logo);
+.btn.checkout__btn {
+  width: 266px;
+  height: 75px;
+  padding: 10px 15px 10px 40px;
+  color: var(--fundo-main);
+  font-size: 28px;
+  font-family: var(--fonte-logo);
 }
 
 .shopping__checkout{
