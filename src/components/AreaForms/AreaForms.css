@@ -1,5 +1,5 @@
 body {
-  background-color: var(--fundo);
+  background-color: var(--fundo-main);
 }
 
 .container__main {
@@ -84,6 +84,7 @@ body {
   transition:
     background-color 0.3s ease-in-out,
     color 0.3s ease-in-out;
+  margin-bottom: 10px;
 }
 
 .btn.btn__submit:hover {

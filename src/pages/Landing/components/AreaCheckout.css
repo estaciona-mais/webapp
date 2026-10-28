@@ -1,6 +1,6 @@
 .area__checkout {
   margin: auto 157px 68px;
-  background-color: var(--fundo);
+  background-color: var(--fundo-main);
   border-radius: var(--raio);
 }
 
@@ -46,7 +46,7 @@
   width: 266px;
   height: 75px;
   padding: 10px 15px 10px 40px;
-  color: var(--fundo);
+  color: var(--fundo-main);
   font-size: 28px;
   font-family: var(--fonte-logo);
 }

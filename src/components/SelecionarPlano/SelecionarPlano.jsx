@@ -38,16 +38,6 @@ export default function SelecionarPlano({ onChange }) {
     coletarPlanos();
   }, []);
 
-  useEffect(() => {
-    try {
-      localStorage.setItem("plano", plano);
-    } catch (error) {
-      // storage indisponivel
-    }
-
-    onChange?.({ target: { name: "plano", value: plano } });
-  }, [plano]);
-
   return (
     <select name="plano" value={plano} onChange={alterarPlano}>
       {planos.map((p) => (

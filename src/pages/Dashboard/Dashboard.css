@@ -1,0 +1,22 @@
+body {
+    background-color: var(--fundo-main);
+}
+
+.dashboard__conteudo {
+    display: grid;
+    gap: 10px;
+    padding: 0 20px 10px 20px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+        "MAPA MAPA MAPA MAPA MAPA MAPA MAPA MAPA VAGA VAGA VAGA VAGA"
+        "MAPA MAPA MAPA MAPA MAPA MAPA MAPA MAPA HISTORICO HISTORICO HISTORICO HISTORICO"
+        "CLIMA CLIMA CLIMA ANUNCIOS ANUNCIOS ANUNCIOS ANUNCIOS ANUNCIOS PAGAMENTO PAGAMENTO PAGAMENTO PAGAMENTO";
+}
+
+.area__grid{ grid-area: MAPA; }
+.area__vaga{ grid-area: VAGA; }
+.area__historico{ grid-area: HISTORICO; }
+.area__pagamento{ grid-area: PAGAMENTO; }
+.area__anuncios{ grid-area: ANUNCIOS; }
+.area__clima{ grid-area: CLIMA; }
