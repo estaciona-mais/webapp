@@ -3,9 +3,8 @@ name: Feature request
 about: Sugira uma funcionalidade para o projeto
 title: "[feat]"
 labels: enhancement
-assignees: ''
+assignees: ""
 type: Feature
-
 ---
 
 **Por que é necessária?**

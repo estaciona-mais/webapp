@@ -1,58 +1,160 @@
-import { useState } from 'react';
-import { ChevronDown, ArrowRight, ArrowLeft } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { ChevronDown, ArrowRight, ArrowLeft } from "lucide-react";
+import { listarCores, listarTipos } from "#services/api/veiculos";
+import { gerarPlacaDeVeiculo } from "#misc/utils";
 
-const dadosEsperados = {tipo: 'Carro', cor: 'Preto', fabricante: '', placa:'', modelo:''}
-const cores = ["Preto", "Branco", "Cinza", "Vermelho", "Azul", "Verde", "Amarelo", "Laranja", "Rosa", "Roxo"]
+export default function CadastroVeiculos({
+  dadosIniciais,
+  onConcluir,
+  onVoltar,
+}) {
+  const [dados, setDados] = useState(dadosIniciais);
+  const [cores, setCores] = useState([]);
+  const [tipos, setTipos] = useState([]);
 
-export default function CadastroVeiculos({dadosIniciais, onConcluir, onVoltar}) {
-    const [dados, setDados] = useState(dadosIniciais || dadosEsperados)
-    
-    function atualizarCampos(e) {
-        setDados(d => ({...d, [e.target.name]: e.target.value}))
+  useEffect(() => {
+    async function coletarCores() {
+      const [coresResponse, tiposResponse] = await Promise.all([
+        listarCores(),
+        listarTipos(),
+      ]);
+      setCores(coresResponse);
+      setTipos(tiposResponse);
     }
+    coletarCores();
+  }, []);
 
-    function enviar(e) {
-        e.preventDefault()
-        onConcluir(dados)
-    }
+  function atualizarCampos(e) {
+    setDados((d) => ({ ...d, [e.target.name]: e.target.value }));
+  }
 
-    return(
-            <form onSubmit={enviar}>
-                <label className="form__label" htmlFor="tipo">Tipo de veículo</label>
-                <div className="form__selector selector">
-                    <select id="tipo" name="tipo" value={dados.tipo} onChange={atualizarCampos}>
-                        <option value="Carro">Carro</option>
-                        <option value="Moto">Moto</option>
-                    </select>
-                    <ChevronDown className="selector__seta" size={36}/>
-                </div>
+  function enviar(e) {
+    e.preventDefault();
+    onConcluir(dados);
+  }
 
-                <label className="form__label" htmlFor="cor">Cor do veículo</label>
-                <div className="form__selector selector">
-                    <select id="cor" name="cor" value={dados.cor} onChange={atualizarCampos}>
-                        {cores.map((cor) => {
-                            return(
-                                <option key={cor} value={cor}>
-                                    {cor}
-                                </option>
-                            )
-                        })}
-                    </select>
-                    <ChevronDown className="selector__seta" size={36}/>
-                </div>
+  return (
+    <form onSubmit={enviar}>
+      <label className="form__label" htmlFor="tipo">
+        Tipo de veículo
+      </label>
+      <div className="form__selector selector">
+        <select
+          id="tipo"
+          name="tipo"
+          value={dados.tipo}
+          onChange={atualizarCampos}
+        >
+          {tipos.map((t) => (
+            <option key={t.id} value={t.id}>
+              {t.titulo}
+            </option>
+          ))}
+        </select>
+        <ChevronDown className="selector__seta" size={36} />
+      </div>
 
-                <label className="form__label" htmlFor="fabricante">Marca do veículo</label>
-                <input className="form__input" placeholder="Digite a marca do veículo" type="text" id="fabricante" name="fabricante" value={dados.fabricante} onChange={atualizarCampos} required />
+      <label className="form__label" htmlFor="cor">
+        Cor do veículo
+      </label>
+      <div className="form__selector selector">
+        <select
+          id="cor"
+          name="cor"
+          value={dados.cor}
+          onChange={atualizarCampos}
+        >
+          {cores.map((cor) => (
+            <option key={cor.id} value={cor.id}>
+              {cor.titulo}
+            </option>
+          ))}
+        </select>
+        <ChevronDown className="selector__seta" size={36} />
+      </div>
 
-                <label className="form__label" htmlFor="placa">Placa</label>
-                <input className="form__input" placeholder="Digite a placa do veículo" type="text" id="placa" name="placa" value={dados.placa} onChange={atualizarCampos}  required />
+      <label className="form__label" htmlFor="fabricante">
+        Marca do veículo
+      </label>
+      <input
+        className="form__input"
+        placeholder="Digite a marca do veículo"
+        type="text"
+        id="fabricante"
+        name="fabricante"
+        value={dados.fabricante}
+        onChange={atualizarCampos}
+        required
+      />
 
-                <label className="form__label" htmlFor="modelo">Modelo</label>
-                <input className="form__input" placeholder="Digite o modelo do veículo" type="text" id="modelo" name="modelo" value={dados.modelo} onChange={atualizarCampos} required />
+      <label className="form__label" htmlFor="modelo">
+        Modelo
+      </label>
+      <input
+        className="form__input"
+        placeholder="Digite o modelo do veículo"
+        type="text"
+        id="modelo"
+        name="modelo"
+        value={dados.modelo}
+        onChange={atualizarCampos}
+        required
+      />
 
-                {/* TODO: ENVIAR PARA A PAGINA DE PAGAMENTO */}
-                <button type="submit" className="btn btn__submit">Confirmar e Continuar <ArrowRight size={20} /></button>
-                <button type="button" className="btn btn__submit" onClick={() => onVoltar(dados)}><ArrowLeft size={20} />Voltar</button>
-            </form>
-    )
+      <label className="form__label" htmlFor="placa">
+        Placa
+      </label>
+      {/* TODO: APLICAR UM INPUT MASK. PADRÃO SUGERIDO: /[A-Z]{3}[0-9]{1}[A-Z]{1}[0-9]{2}/ */}
+      <input
+        className="form__input"
+        placeholder="Digite a placa do veículo"
+        type="text"
+        id="placa"
+        name="placa"
+        value={dados.placa}
+        onChange={atualizarCampos}
+        required
+      />
+
+      <label className="form__label" htmlFor="ano">
+        Ano
+      </label>
+      <input
+        className="form__input"
+        placeholder="2008"
+        type="number"
+        id="ano"
+        name="ano"
+        value={dados.ano}
+        onChange={atualizarCampos}
+        required
+      />
+
+      <label className="form__label" htmlFor="observacao">
+        Observação (opcional)
+      </label>
+      <input
+        className="form__input"
+        placeholder="Adesivo no capô."
+        type="number"
+        id="observacao"
+        name="observacao"
+        value={dados.observacao}
+        onChange={atualizarCampos}
+      />
+
+      {/* TODO: ENVIAR PARA A PAGINA DE PAGAMENTO */}
+      <button type="submit" className="btn btn__submit">
+        Confirmar e Continuar <ArrowRight size={20} />
+      </button>
+      <button
+        type="button"
+        className="btn btn__submit"
+        onClick={() => onVoltar(dados)}
+      >
+        <ArrowLeft size={20} />
+        Voltar
+      </button>
+    </form>
+  );
 }
