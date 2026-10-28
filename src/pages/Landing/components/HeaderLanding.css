@@ -1,6 +1,6 @@
-.cabecalho{
-    padding: 20px 157px;
-    background-color: var(--fundo);
+.cabecalho {
+  padding: 20px 157px;
+  background-color: var(--fundo-main);
 }
 
 .cabecalho__faixa{
@@ -53,6 +53,6 @@
     color: var(--destaque);
 }
 
-.btn.btn__cadastro:hover{
-    color: var(--fundo);
+.btn.btn__cadastro:hover {
+  color: var(--fundo-main);
 }

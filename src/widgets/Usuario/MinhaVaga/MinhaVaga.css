@@ -1,0 +1,24 @@
+.vaga__conteudo{
+    font-size: 36px;
+    color: var(--primaria);
+    display: flex;
+    text-align: center;
+    gap: 35px;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.vaga__texto{
+    border: 1px solid var(--primaria);
+    padding: 20px 10px;
+    border-radius: var(--raio);
+}
+
+.zona__vaga{
+    width: 100%;
+}
+
+.status__vaga{
+    width: 100%;
+}

@@ -50,9 +50,60 @@ export default function CadastroVeiculos({dadosIniciais, onConcluir, onVoltar}) 
                 <label className="form__label" htmlFor="modelo">Modelo</label>
                 <input className="form__input" placeholder="Digite o modelo do veículo" type="text" id="modelo" name="modelo" value={dados.modelo} onChange={atualizarCampos} required />
 
-                {/* TODO: ENVIAR PARA A PAGINA DE PAGAMENTO */}
-                <button type="submit" className="btn btn__submit">Confirmar e Continuar <ArrowRight size={20} /></button>
-                <button type="button" className="btn btn__submit" onClick={() => onVoltar(dados)}><ArrowLeft size={20} />Voltar</button>
-            </form>
-    )
+      <label className="form__label" htmlFor="placa">
+        Placa
+      </label>
+      {/* TODO: APLICAR UM INPUT MASK. PADRÃO SUGERIDO: /[A-Z]{3}[0-9]{1}[A-Z]{1}[0-9]{2}/ */}
+      <input
+        className="form__input"
+        placeholder="Digite a placa do veículo"
+        type="text"
+        id="placa"
+        name="placa"
+        value={dados.placa}
+        onChange={atualizarCampos}
+        required
+      />
+
+      <label className="form__label" htmlFor="ano">
+        Ano
+      </label>
+      <input
+        className="form__input"
+        placeholder="2008"
+        type="number"
+        id="ano"
+        name="ano"
+        value={dados.ano}
+        onChange={atualizarCampos}
+        required
+      />
+
+      <label className="form__label" htmlFor="observacao">
+        Observação (opcional)
+      </label>
+      <input
+        className="form__input"
+        placeholder="Adesivo no capô."
+        type="number"
+        id="observacao"
+        name="observacao"
+        value={dados.observacao}
+        onChange={atualizarCampos}
+      />
+
+      {/* TODO: ENVIAR PARA A PAGINA DE PAGAMENTO */}
+      <button type="submit" className="btn btn__submit">
+        Confirmar e Continuar <ArrowRight size={20} />
+      </button>
+      <button
+        type="button"
+        className="btn btn__submit"
+        onClick={() => onVoltar(dados)}
+      >
+        <ArrowLeft size={20} />
+        Voltar
+      </button>
+    </form>
+  );
 }

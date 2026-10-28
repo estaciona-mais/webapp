@@ -26,6 +26,21 @@ export default function AreaForms({subtitulo, textoLink, destinoLink, children})
                     </nav>
                 </div>
             </div>
-        </>
-    )
+            <p className="logo__subtitulo">{subtitulo}</p>
+          </div>
+          <div className="container__forms">{children}</div>
+        </div>
+        <div className="nav__cadastro">
+          <Link className="link__login" to={destinoLink}>
+            {textoLink}
+          </Link>
+          <nav>
+            <a>Ajuda</a>
+            <a>Política de Privacidade</a>
+            <a>Termos de Uso</a>
+          </nav>
+        </div>
+      </div>
+    </>
+  );
 }
