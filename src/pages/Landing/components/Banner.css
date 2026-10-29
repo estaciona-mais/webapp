@@ -18,5 +18,5 @@
 }
 
 .nav__banner a:hover {
-    color: var(--destaque);
+  color: var(--destaque);
 }

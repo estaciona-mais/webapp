@@ -1,44 +1,89 @@
-import { useState } from 'react';
-import CadastroUsuario from "./components/CadastroUsuario"
-import CadastroVeiculos from "./components/CadastroVeiculos"
-import AreaForms from '../../components/AreaForms/AreaForms';
+import { useState } from "react";
+import { useAuth } from "#contexts/AuthContext.jsx";
+import CadastroUsuario from "#pages/Cadastro/components/CadastroUsuario";
+import CadastroVeiculos from "#pages/Cadastro/components/CadastroVeiculos";
+import AreaForms from "#components/AreaForms/AreaForms";
+
+import { cadastrarVeiculo } from "#services/api/veiculos";
+import { tituloParaCampoEnum } from "#misc/utils";
+import { iniciarCheckout } from "#services/api/assinaturas";
+import { dadosIniciaisCliente, dadosIniciaisVeiculo } from "#misc/debug";
 
 export default function Cadastro() {
-    const [etapa, setEtapa] = useState(1)
-    const [dadosUsuario, setDadosUsuario] = useState(null)
-    const [dadosVeiculo, setDadosVeiculo] = useState(null)
+  // TODO: substituir número por componente
+  const [etapa, setEtapa] = useState(1);
+  const [dadosUsuario, setDadosUsuario] = useState(dadosIniciaisCliente);
+  const [dadosVeiculo, setDadosVeiculo] = useState(dadosIniciaisVeiculo);
 
-    function concluirEtapaUsuario(dados) {
-        setDadosUsuario(dados)
-        setEtapa(2)
+  const { cadastrarClienteApi, cadastrarClienteGoogle } = useAuth();
+
+  function concluirEtapaUsuario(dados) {
+    setDadosUsuario(dados);
+    setEtapa(2);
+  }
+
+  function voltarEtapaUsuario(dados) {
+    setDadosVeiculo(dados);
+    setEtapa(1);
+  }
+
+  async function executarCadastroDoCliente(usuario) {
+    switch (usuario.provider) {
+      case "LOCAL":
+        return await cadastrarClienteApi(usuario);
+      case "GOOGLE":
+        return await cadastrarClienteGoogle(usuario);
+      default:
+        throw new Error("Provedor de login inválido.");
     }
+  }
 
-    function voltarEtapaUsuario(dados) {
-        setDadosVeiculo(dados)
-        setEtapa(1)
-    }
+  async function enviarCadastro(dados) {
+    console.log("Cadastro enviado:", dados);
+    const { usuario, veiculo } = dados;
 
-    // TODO: ENVIAR PARA O BANCO DE DADOS
-    function enviarCadastro(dados) {
-        console.log("Cadastro enviado:", dados)
-    }
+    const clienteCadastrado = await executarCadastroDoCliente(usuario);
+    console.log("Cliente cadastrado:", clienteCadastrado);
 
-    function concluirEtapaVeiculo(dados) {
-        setDadosVeiculo(dados)
-        const { confirmarSenha, senha, ...usuarioSemConfirmacao } = dadosUsuario
-        enviarCadastro({ usuario: usuarioSemConfirmacao, veiculo: dados })
-    }
+    await cadastrarVeiculo({
+      ...veiculo,
+      cor: tituloParaCampoEnum(veiculo.cor),
+      tipo: tituloParaCampoEnum(veiculo.tipo),
+      clienteId: clienteCadastrado.id,
+    });
 
-    return (
-        <main>
-            <AreaForms subtitulo="Crie sua Conta Estaciona+" textoLink="Já tem conta? Conecte-se" destinoLink="/login">
-                {etapa === 1 ? (
-                    <CadastroUsuario dadosIniciais={dadosUsuario} onConcluir={concluirEtapaUsuario} />
-                ) : (
-                    <CadastroVeiculos dadosIniciais={dadosVeiculo} onVoltar={voltarEtapaUsuario} onConcluir={concluirEtapaVeiculo} />
-                )}
-            </AreaForms>
+    console.log("Plano:", usuario.plano);
+    await iniciarCheckout({ planoId: usuario.plano }).then(({ url }) => {
+      console.log("Checkout URL:", url);
+      return (window.location.href = url);
+    });
+  }
 
-        </main>
-    )
+  function concluirEtapaVeiculo(dados) {
+    setDadosVeiculo(dados);
+    enviarCadastro({ usuario: dadosUsuario, veiculo: dados });
+  }
+
+  return (
+    <main>
+      <AreaForms
+        subtitulo="Crie sua Conta Estaciona+"
+        textoLink="Já tem conta? Conecte-se"
+        destinoLink="/login"
+      >
+        {etapa === 1 ? (
+          <CadastroUsuario
+            dadosIniciais={dadosUsuario}
+            onConcluir={concluirEtapaUsuario}
+          />
+        ) : (
+          <CadastroVeiculos
+            dadosIniciais={dadosVeiculo}
+            onVoltar={voltarEtapaUsuario}
+            onConcluir={concluirEtapaVeiculo}
+          />
+        )}
+      </AreaForms>
+    </main>
+  );
 }

@@ -38,7 +38,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard tema={tema} mudarTema={mudarTema} />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
