@@ -1,9 +1,17 @@
-import { gerarPlacaDeVeiculo, DEBUG_MODE } from "./utils";
+const storedDebug = JSON.parse(localStorage.getItem("DEBUG"));
 
-const dadosIniciaisCliente = DEBUG_MODE
+const DEBUG = {
+  ativo: process.env.NODE_ENV && (storedDebug?.ativo ?? null),
+  opts: {
+    form: storedDebug?.opts.form ?? true,
+    logs: storedDebug?.opts.logs ?? true,
+  },
+};
+
+const dadosIniciaisCliente = DEBUG.ativo
   ? {
       nome: "Usuário Teste",
-      email: `teste${Math.floor(Math.random() * 382749)}@mail.com`,
+      email: gerarEmail(),
       senha: "testeteste",
       confirmarSenha: "testeteste",
       plano: 3,
@@ -22,7 +30,7 @@ const dadosIniciaisCliente = DEBUG_MODE
       credential: "",
     };
 
-const dadosIniciaisVeiculo = DEBUG_MODE
+const dadosIniciaisVeiculo = DEBUG.ativo
   ? {
       tipo: "Carro",
       cor: "Preto",
@@ -42,4 +50,27 @@ const dadosIniciaisVeiculo = DEBUG_MODE
       observacao: "",
     };
 
-export { dadosIniciaisCliente, dadosIniciaisVeiculo };
+function log(...args) {
+  if (!DEBUG.ativo || !DEBUG.opts.logs) return;
+  console.log(args);
+}
+
+function gerarPlacaDeVeiculo() {
+  const gerarNumero = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1)) + min;
+  const gerarLista = (len) => Array(len).fill(0);
+
+  const ls = gerarLista(4).map((_) => String.fromCharCode(gerarNumero(65, 90)));
+  const ns = gerarLista(3).map((_) => gerarNumero(0, 9));
+  return ls.slice(0, 3).join("") + ns[0] + ls[3] + ns.slice(1, 3).join("");
+}
+
+function gerarEmail() {
+  return `teste${Math.floor(Math.random() * new Date().getTime())}@mail.com`;
+}
+
+if (process.env.NODE_ENV === "development") {
+  localStorage.setItem("DEBUG", JSON.stringify(DEBUG));
+}
+
+export { dadosIniciaisCliente, dadosIniciaisVeiculo, log };

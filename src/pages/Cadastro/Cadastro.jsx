@@ -8,6 +8,7 @@ import { cadastrarVeiculo } from "#services/api/veiculos";
 import { tituloParaCampoEnum } from "#misc/utils";
 import { iniciarCheckout } from "#services/api/assinaturas";
 import { dadosIniciaisCliente, dadosIniciaisVeiculo } from "#misc/debug";
+import { log } from "#misc/debug.js";
 
 export default function Cadastro() {
   // TODO: substituir número por componente
@@ -39,11 +40,11 @@ export default function Cadastro() {
   }
 
   async function enviarCadastro(dados) {
-    console.log("Cadastro enviado:", dados);
+    log("Cadastro enviado:", dados);
     const { usuario, veiculo } = dados;
 
     const clienteCadastrado = await executarCadastroDoCliente(usuario);
-    console.log("Cliente cadastrado:", clienteCadastrado);
+    log("Cliente cadastrado:", clienteCadastrado);
 
     await cadastrarVeiculo({
       ...veiculo,
@@ -52,11 +53,11 @@ export default function Cadastro() {
       clienteId: clienteCadastrado.id,
     });
 
-    console.log("Plano:", usuario.plano);
+    log("Plano:", usuario.plano);
     const checkoutResponse = await iniciarCheckout({ planoId: usuario.plano });
     switch (checkoutResponse.codigoStatus) {
       case 201:
-        console.log("Checkout URL:", checkoutResponse.url);
+        log("Checkout URL:", checkoutResponse.url);
         window.location.href = checkoutResponse.url;
         break;
       case 400:
