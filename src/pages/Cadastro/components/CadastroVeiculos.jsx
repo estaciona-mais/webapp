@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChevronDown, ArrowRight, ArrowLeft } from "lucide-react";
 import { listarCores, listarTipos } from "#services/api/veiculos";
-import { gerarPlacaDeVeiculo } from "#misc/utils";
 
 export default function CadastroVeiculos({
   dadosIniciais,

@@ -1,12 +1,9 @@
 import { useState } from "react";
 import SelecionarPlano from "#components/SelecionarPlano/SelecionarPlano";
 import { ChevronDown, ArrowRight } from "lucide-react";
-import {
-  loginComGoogle,
-  cadastrarClienteGoogle,
-  buscarUsuarioGoogle,
-} from "#services/api/auth.js";
+import { loginComGoogle, buscarUsuarioGoogle } from "#services/api/auth.js";
 import CadastroLoginGoogle from "#components/CadastroLoginGoogle/CadastroLoginGoogle.jsx";
+import { log } from "#misc/debug.js";
 
 export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
   const [dados, setDados] = useState(dadosIniciais);
@@ -36,7 +33,7 @@ export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
 
   async function aoEntrarComGoogle(res) {
     const usuarioJaCadastrado = await buscarUsuarioGoogle(res.credential);
-    console.log("Cadastrado:", usuarioJaCadastrado);
+    log("Cadastrado:", usuarioJaCadastrado);
     if (usuarioJaCadastrado) {
       setAviso(
         "Usuário já cadastrado com Google. Por favor, realize seu login.",
@@ -46,7 +43,7 @@ export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
 
     try {
       const dadosLogin = await loginComGoogle(res.credential);
-      console.log("Dados de login:", dadosLogin);
+      log("Dados de login:", dadosLogin);
       setDados(dadosLogin);
       setAviso("");
       onConcluir({

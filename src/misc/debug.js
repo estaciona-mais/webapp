@@ -50,6 +50,11 @@ const dadosIniciaisVeiculo = DEBUG.ativo
       observacao: "",
     };
 
+function log(...args) {
+  if (!DEBUG.ativo || !DEBUG.opts.logs) return;
+  console.log(args);
+}
+
 function gerarPlacaDeVeiculo() {
   const gerarNumero = (min, max) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
