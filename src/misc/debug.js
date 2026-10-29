@@ -1,9 +1,17 @@
-import { gerarPlacaDeVeiculo, DEBUG_MODE } from "./utils";
+const storedDebug = JSON.parse(localStorage.getItem("DEBUG"));
 
-const dadosIniciaisCliente = DEBUG_MODE
+const DEBUG = {
+  ativo: process.env.NODE_ENV && (storedDebug?.ativo ?? null),
+  opts: {
+    form: storedDebug?.opts.form ?? true,
+    logs: storedDebug?.opts.logs ?? true,
+  },
+};
+
+const dadosIniciaisCliente = DEBUG.ativo
   ? {
       nome: "Usuário Teste",
-      email: `teste${Math.floor(Math.random() * 382749)}@mail.com`,
+      email: gerarEmail(),
       senha: "testeteste",
       confirmarSenha: "testeteste",
       plano: 3,
@@ -22,7 +30,7 @@ const dadosIniciaisCliente = DEBUG_MODE
       credential: "",
     };
 
-const dadosIniciaisVeiculo = DEBUG_MODE
+const dadosIniciaisVeiculo = DEBUG.ativo
   ? {
       tipo: "Carro",
       cor: "Preto",
@@ -54,6 +62,10 @@ function gerarPlacaDeVeiculo() {
 
 function gerarEmail() {
   return `teste${Math.floor(Math.random() * new Date().getTime())}@mail.com`;
+}
+
+if (process.env.NODE_ENV === "development") {
+  localStorage.setItem("DEBUG", JSON.stringify(DEBUG));
 }
 
 export { dadosIniciaisCliente, dadosIniciaisVeiculo, log };
