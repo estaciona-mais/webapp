@@ -42,4 +42,18 @@ const dadosIniciaisVeiculo = DEBUG_MODE
       observacao: "",
     };
 
-export { dadosIniciaisCliente, dadosIniciaisVeiculo };
+function gerarPlacaDeVeiculo() {
+  const gerarNumero = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1)) + min;
+  const gerarLista = (len) => Array(len).fill(0);
+
+  const ls = gerarLista(4).map((_) => String.fromCharCode(gerarNumero(65, 90)));
+  const ns = gerarLista(3).map((_) => gerarNumero(0, 9));
+  return ls.slice(0, 3).join("") + ns[0] + ls[3] + ns.slice(1, 3).join("");
+}
+
+function gerarEmail() {
+  return `teste${Math.floor(Math.random() * new Date().getTime())}@mail.com`;
+}
+
+export { dadosIniciaisCliente, dadosIniciaisVeiculo, log };
