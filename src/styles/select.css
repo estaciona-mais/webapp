@@ -1,56 +1,60 @@
-.label__selector{
-    font-size: 16px;
-    font-family: var(--fonte-logo);
-    color: var(--texto);
-    padding-left: 4px;
+.label__selector {
+  font-size: 16px;
+  font-family: var(--fonte-logo);
+  color: var(--texto);
+  padding-left: 4px;
 }
 
-.selector{
-    position: relative;
-    width: 100%;
-    font-family: var(--fonte-logo);
+.selector {
+  position: relative;
+  width: 100%;
+  font-family: var(--fonte-logo);
 }
 
-.selector select{
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border: none;
-    border-bottom: 2px solid var(--texto);
-    border-radius: 0;
-    background: transparent;
-    font-family: var(--fonte-logo);
-    font-size: 44px;
-    color: var(--primaria);
-    width: 100%;
-    padding: 9px 36px 9px 0;
-    outline: none;
-    cursor: pointer;
-    transition: border-bottom 0.3s ease-in-out, color 0.3s ease-in-out;
+.selector select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-bottom: 2px solid var(--texto);
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--fonte-logo);
+  font-size: 44px;
+  color: var(--primaria);
+  width: 100%;
+  padding: 9px 36px 9px 0;
+  outline: none;
+  cursor: pointer;
+  transition:
+    border-bottom 0.3s ease-in-out,
+    color 0.3s ease-in-out;
 }
 
 /* TODO: ESTILIZAR AS OPTIONS */
-.selector option{
-    font-family: var(--fonte-logo);
-    font-size: 16px;
-    color: var(--primaria);
-    background-color: var(--fundo);
+.selector option {
+  font-family: var(--fonte-logo);
+  font-size: 16px;
+  color: var(--primaria);
+  background-color: var(--fundo);
 }
 
-.selector__seta{
-    position: absolute;
-    right: 4px;
-    bottom: 12px;
-    pointer-events: none;
-    color: var(--destaque);
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+.selector__seta {
+  position: absolute;
+  right: 4px;
+  bottom: 12px;
+  pointer-events: none;
+  color: var(--destaque);
+  transition:
+    color 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
 }
 
-.selector:hover .selector__seta{
-    color: var(--primaria);
+.selector:hover .selector__seta {
+  color: var(--primaria);
 }
 
 .selector select:hover,
-.selector select:focus{
-    border-color: var(--destaque);
+.selector select:focus {
+  border-color: var(--destaque);
 }

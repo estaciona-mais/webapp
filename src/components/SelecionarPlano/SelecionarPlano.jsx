@@ -1,47 +1,32 @@
-import { useState, useEffect } from 'react';
-import "./SelecionarPlano.css"
+import { useState, useEffect } from "react";
+import { listarPlanos } from "#services/api/planos";
+import "./SelecionarPlano.css";
 
 /* TODO: SUBSTITUIR POR INFORMAÇÕES DA API */
-const planos = [
-    { id: "mensal", valor: 29.99, titulo: "Mensal"},
-    { id: "anual", valor: 359.99, titulo: "Anual"}
-]
 
-export default function SelecionarPlano({onChange}){
+export default function SelecionarPlano({ onChange }) {
+  const [planos, setPlanos] = useState([]);
+  const [plano, setPlano] = useState("");
 
-    const[ plano, setPlano ] = useState(() => {
-            let planoSalvo = null
-            const defaultPlano =  planos[0].id
+  function alterarPlano(e) {
+    setPlano(e.target.value);
+  }
 
-            try {
-                planoSalvo = localStorage.getItem('plano')
-            } catch (error) {
-                // storage indisponivel
-            }
+  useEffect(() => {
+    async function coletarPlanos() {
+      const response = await listarPlanos();
+      setPlanos(response);
+      setPlano(() => {
+        let planoSalvo = null;
+        const defaultPlano = response[0].id;
 
-            const planoExistente = planos.find(({ id }) => id === planoSalvo);
-
-            if(planoExistente) {
-                return planoExistente.id
-            }
-
-            return defaultPlano
-        }
-    )
-
-    function alterarPlano(e) {
-        setPlano(e.target.value)
-    }
-
-    useEffect(() => {
         try {
-            localStorage.setItem('plano', plano)
+          planoSalvo = localStorage.getItem("plano");
         } catch (error) {
-            // storage indisponivel
+          // storage indisponivel
         }
 
-        onChange?.({target:{name: 'plano', value: plano}})
-    }, [plano])
+        const planoExistente = response.find(({ id }) => id === planoSalvo);
 
         if (planoExistente) {
           return planoExistente.id;
@@ -52,6 +37,16 @@ export default function SelecionarPlano({onChange}){
     }
     coletarPlanos();
   }, []);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("plano", plano);
+    } catch (error) {
+      // storage indisponivel
+    }
+
+    onChange?.({ target: { name: "plano", value: plano } });
+  }, [plano]);
 
   return (
     <select name="plano" value={plano} onChange={alterarPlano}>
