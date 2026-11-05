@@ -33,7 +33,10 @@ export default function Login() {
 
   async function aoEntrarComGoogle(res) {
     try {
-      await loginComGoogle(res.credential);
+      const loginResponse = await loginComGoogle(res.credential);
+      if (loginResponse.mensagem) {
+        throw new Error(loginResponse.mensagem);
+      }
       navigate("/dashboard");
     } catch (err) {
       setAviso(err.message);

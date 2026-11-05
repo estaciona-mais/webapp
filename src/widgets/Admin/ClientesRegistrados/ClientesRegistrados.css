@@ -1,0 +1,82 @@
+.usuarios__conteudo {  display: grid;
+    grid-template-columns: repeat(3) 1fr;
+    grid-template-rows: repeat(3) 1fr;
+    gap: 2px 2px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "INFORMACOES INFORMACOES PLANOS"
+        "INFORMACOES INFORMACOES PLANOS"
+        "STATUS STATUS STATUS";
+    font-size: 22px;
+    line-height: 22px;
+}
+
+.usuarios__informacoes { grid-area: INFORMACOES; }
+.usuarios__planos { grid-area: PLANOS; }
+.usuarios__assinaturas { grid-area: STATUS; }
+
+.sparkline{
+    width: 100%;
+    height: 20px;
+}
+
+.usuarios__informacoes{
+    /* border: 1px solid var(--primaria); */
+    border-radius: var(--raio);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.informacoes__texto{
+    font-size: 10px;
+    font-weight: bolder;
+}
+
+.usuarios__plano{
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.usuarios__planos{
+    /* border: 1px solid var(--primaria); */
+    border-radius: var(--raio);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.usuarios__assinaturas{
+    /* border: 1px solid var(--primaria); */
+    border-radius: var(--raio);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.usuarios__status{
+    font-size: 10px;
+    font-weight: bolder;
+}
+
+.usuarios__ativos{
+    color: var(--primaria);
+}
+
+.usuarios__inadimplentes, .usuarios__pendentes{
+    color: var(--destaque);
+}
+
+.usuarios__cancelados{
+    color: var(--erro);
+}
+
+.informacoes__registroTexto, .texto__mais, .plano__span{
+    color: var(--primaria);
+}
