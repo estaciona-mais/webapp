@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
   const iniciarSessao = (dados) => {
     const { token, nome, papel } = dados;
     const resumo = { nome, papel };
-    localStorage.setItem("token", token);
+    token && localStorage.setItem("token", token);
     localStorage.setItem("usuario", JSON.stringify(resumo));
     setUsuario(resumo);
     return dados;
