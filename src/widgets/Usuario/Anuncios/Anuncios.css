@@ -1,0 +1,12 @@
+.anuncios__conteudo{
+    font-size: 22px;
+    line-height: 22px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.anuncio{
+    padding: 12px 0;
+    border-bottom: 1px solid var(--texto);
+}

@@ -1,0 +1,24 @@
+.pagamento__conteudo{
+    font-size: 22px;
+    line-height: 22px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.pagamento__plano{
+    padding-top: 15px;
+}
+
+.tempo__renovacao{
+    color: var(--primaria);
+}
+
+.pagamento__highlight{
+    border-bottom: 1px solid var(--secundaria);
+}
+
+[data-theme="dark"] .pagamento__highlight {
+    color: var(--secundaria);
+    border-bottom: 0;
+}

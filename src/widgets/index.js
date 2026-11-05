@@ -4,6 +4,7 @@ export { default as StatusPagamento } from './Cliente/StatusPagamento/StatusPaga
 export { default as Anuncios } from './Cliente/Anuncios/Anuncios';
 export { default as Clima } from './Cliente/Clima/Clima';
 export { default as Grid } from './Cliente/GridVagas/GridVagas';
+
 export { default as ClientesRegistrados } from './Admin/ClientesRegistrados/ClientesRegistrados';
 export { default as Vagas } from './Admin/VagasStatus/VagasStatus';
 export { default as Financeiro } from './Admin/RelatoriosFinanceiros/RelatoriosFinanceiros';

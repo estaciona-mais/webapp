@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "imports": {
-    "#src/*": "./src/*",
     "#components/*": "./src/components/*",
     "#misc/*": "./src/misc/*",
     "#contexts/*": "./src/contexts/*",
     "#pages/*": "./src/pages/*",
-    "#services/*": "./src/services/*"
+    "#services/*": "./src/services/*",
+    "#src/*": "./src/*"
   },
   "scripts": {
     "dev": "vite",

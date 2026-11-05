@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChevronDown, ArrowRight, ArrowLeft } from "lucide-react";
 import { listarCores, listarTipos } from "#services/api/veiculos";
-import { gerarPlacaDeVeiculo } from "#misc/utils";
 
 export default function CadastroVeiculos({
   dadosIniciais,
@@ -136,7 +135,6 @@ export default function CadastroVeiculos({
       <input
         className="form__input"
         placeholder="Adesivo no capô."
-        type="number"
         id="observacao"
         name="observacao"
         value={dados.observacao}

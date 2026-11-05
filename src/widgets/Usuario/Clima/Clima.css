@@ -1,0 +1,11 @@
+.clima__conteudo{
+    font-size: 22px;
+    line-height: 22px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.clima__container{
+    padding-top: 15px;
+}
