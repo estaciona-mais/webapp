@@ -13,6 +13,10 @@ export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
     setDados((d) => ({ ...d, [e.target.name]: e.target.value }));
   }
 
+  function atualizarPlano(plano) {
+    setDados((d) => ({ ...d, plano }));
+  }
+
   function validarSenha(dados) {
     if (dados.senha !== dados.confirmarSenha) {
       return "As senhas não conferem";
@@ -120,7 +124,7 @@ export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
 
       <label className="form__label">Selecione seu Plano</label>
       <div className="form__selector selector">
-        <SelecionarPlano value={dados.plano} onChange={atualizarCampos} />
+        <SelecionarPlano value={dados.plano} onChange={atualizarPlano} />
         <ChevronDown className="selector__seta" size={22} />
       </div>
 
