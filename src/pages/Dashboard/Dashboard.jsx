@@ -3,7 +3,6 @@ import { useState } from "react";
 import DashboardUsuario from "./components/DashboardUsuario"
 import DashboardAdmin from "./components/DashboardAdmin"
 import Header from "../../components/Header/Header";
-import Sidebar from "#src/components/Sidebar/Sidebar";
 
 export default function Dashboard({tema, mudarTema}){
 //    Temporário, para a construção dos layouts!
