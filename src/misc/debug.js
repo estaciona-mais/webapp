@@ -1,14 +1,14 @@
 const storedDebug = JSON.parse(localStorage.getItem("DEBUG"));
 
-const DEBUG = {
-  ativo: process.env.NODE_ENV && (storedDebug?.ativo ?? null),
+const DEBUG = process.env.NODE_ENV === "development" && {
+  ativo: storedDebug?.ativo ?? null,
   opts: {
     form: storedDebug?.opts.form ?? true,
     logs: storedDebug?.opts.logs ?? true,
   },
 };
 
-const dadosIniciaisCliente = DEBUG.ativo
+const dadosIniciaisCliente = DEBUG?.ativo
   ? {
       nome: "Usuário Teste",
       email: gerarEmail(),
@@ -30,7 +30,7 @@ const dadosIniciaisCliente = DEBUG.ativo
       credential: "",
     };
 
-const dadosIniciaisVeiculo = DEBUG.ativo
+const dadosIniciaisVeiculo = DEBUG?.ativo
   ? {
       tipo: "Carro",
       cor: "Preto",
@@ -51,7 +51,7 @@ const dadosIniciaisVeiculo = DEBUG.ativo
     };
 
 function log(...args) {
-  if (!DEBUG.ativo || !DEBUG.opts.logs) return;
+  if (!DEBUG?.ativo || !DEBUG?.opts.logs) return;
   console.log(args);
 }
 

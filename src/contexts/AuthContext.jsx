@@ -26,9 +26,10 @@ const AuthProvider = ({ children }) => {
   const iniciarSessao = (dados) => {
     const { token, nome, papel } = dados;
     const resumo = { nome, papel };
-    localStorage.setItem("token", token);
+    token && localStorage.setItem("token", token);
     localStorage.setItem("usuario", JSON.stringify(resumo));
     setUsuario(resumo);
+    return dados;
   };
 
   const login = async (email, senha) =>
@@ -42,17 +43,11 @@ const AuthProvider = ({ children }) => {
     setUsuario(null);
   };
 
-  const cadastrarClienteApi = async (usuario) => {
-    const res = await authCadastroApi(usuario);
-    await login(usuario.email, usuario.senha);
-    return res;
-  };
+  const cadastrarClienteApi = async (usuario) =>
+    iniciarSessao(await authCadastroApi(usuario));
 
-  const cadastrarClienteGoogle = async (usuario) => {
-    const res = await authCadastroGoogle(usuario);
-    await loginComGoogle(usuario.credential);
-    return res;
-  };
+  const cadastrarClienteGoogle = async (usuario) =>
+    iniciarSessao(await authCadastroGoogle(usuario));
 
   return (
     <AuthContext.Provider

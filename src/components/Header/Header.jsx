@@ -1,8 +1,18 @@
 import Logo from "#components/Logo/Logo";
 import "./Header.css";
 import { UserRound, Moon, Settings, Bell, Sun } from "lucide-react";
+import { useAuth } from "#contexts/AuthContext.jsx";
+import { useNavigate } from "react-router-dom";
 
-export default function Header({ role, setRole, tema, mudarTema}){
+export default function Header({ role, setRole, tema, mudarTema}) {
+    const { logout: authLogout } = useAuth();
+    const navigate = useNavigate();
+
+    const logout = () => {
+      authLogout();
+      navigate("/login");
+    }
+
     return (
         <header className="header">
             <div className="header__faixa">
@@ -33,6 +43,10 @@ export default function Header({ role, setRole, tema, mudarTema}){
                         <div>
                             <p>Username</p>
                             <p className="usuario__role">{role}</p>
+                            {/* Botão de logout */}
+                            <button onClick={logout}>
+                              SAIR
+                            </button>
                         </div>
                     </div>
                 </div>

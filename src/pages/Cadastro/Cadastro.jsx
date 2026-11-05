@@ -45,6 +45,10 @@ export default function Cadastro() {
 
     const clienteCadastrado = await executarCadastroDoCliente(usuario);
     log("Cliente cadastrado:", clienteCadastrado);
+    if (clienteCadastrado.mensagem) {
+      alert(clienteCadastrado.mensagem);
+      return;
+    }
 
     await cadastrarVeiculo({
       ...veiculo,
