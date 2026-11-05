@@ -4,15 +4,6 @@
   justify-content: center;
 }
 
-.form__login__outros-logins {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2em 0;
-  border-top: solid 1px var(--secundaria);
-  padding: 1em 0;
-}
-
 .link__ajuda {
   font-size: 10px;
   font-family: var(--fonte-ui);
