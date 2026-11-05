@@ -48,7 +48,7 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 0;
-    border: 1px solid var(--primaria);
+    /* border: 1px solid var(--primaria); */
     padding: 30px 15px;
     border-radius: var(--raio);
 }

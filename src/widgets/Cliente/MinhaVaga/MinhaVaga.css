@@ -13,6 +13,7 @@
     border: 1px solid var(--primaria);
     padding: 20px 10px;
     border-radius: var(--raio);
+    font-size: 36px;
 }
 
 .zona__vaga{
