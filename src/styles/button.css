@@ -19,3 +19,7 @@
 .btn:hover {
   cursor: pointer;
 }
+
+.btn[disabled] {
+  opacity: 0.5;
+}

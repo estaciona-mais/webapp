@@ -10,6 +10,7 @@ export default function CadastroVeiculos({
   const [dados, setDados] = useState(dadosIniciais);
   const [cores, setCores] = useState([]);
   const [tipos, setTipos] = useState([]);
+  const [desabilitado, setDesabilitado] = useState(false);
 
   useEffect(() => {
     async function coletarCores() {
@@ -29,6 +30,7 @@ export default function CadastroVeiculos({
 
   function enviar(e) {
     e.preventDefault();
+    setDesabilitado(true);
     onConcluir(dados);
   }
 
@@ -141,8 +143,7 @@ export default function CadastroVeiculos({
         onChange={atualizarCampos}
       />
 
-      {/* TODO: ENVIAR PARA A PAGINA DE PAGAMENTO */}
-      <button type="submit" className="btn btn__submit">
+      <button type="submit" className="btn btn__submit" disabled={desabilitado}>
         Confirmar e Continuar <ArrowRight size={20} />
       </button>
       <button
