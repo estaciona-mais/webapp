@@ -40,6 +40,28 @@
     top: 12px;
 }
 
+.widget__menu{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 10;
+    min-width: 130px;
+    padding: 6px;
+    background: var(--fundo-secundario);
+    border: 1px solid var(--primaria);
+    border-radius: var(--raio);
+}
+
+.widget__menu button{
+    width: 100%;
+    padding: 2px;
+    background: none;
+    border: 0;
+    color: var(--texto);
+    text-align: center;
+    cursor: pointer;
+}
+
 .widget__opcoes:hover{
     cursor: pointer;
 }

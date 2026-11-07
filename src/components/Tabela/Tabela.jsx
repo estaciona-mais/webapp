@@ -1,6 +1,6 @@
 import "./Tabela.css"
 
-export default function Tabela({conteudos, dados, key}){
+export default function Tabela({conteudos, dados, chave}){
     return(
         <div className="tabela__container">
             <table className="tabela__header">
@@ -13,7 +13,7 @@ export default function Tabela({conteudos, dados, key}){
                 </thead>
                 <tbody>
                     {dados.map((linha) => (
-                        <tr key={linha[key]}>
+                        <tr key={linha[chave]}>
                             {conteudos.map((c) => (
                                 <td key={c.conteudo}>{linha[c.conteudo]}</td>
                             ))}

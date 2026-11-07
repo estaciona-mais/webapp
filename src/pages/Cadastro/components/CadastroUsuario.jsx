@@ -60,6 +60,8 @@ export default function CadastroUsuario({ dadosIniciais, onConcluir }) {
     } catch (err) {
       setAviso(err);
     }
+
+    return null;
   }
 
   return (

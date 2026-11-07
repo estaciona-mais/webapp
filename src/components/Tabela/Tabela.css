@@ -17,3 +17,18 @@
 .tabela__header thead{
     border-bottom: 1px solid var(--primaria);
 }
+
+.busca__container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tabela__busca{
+    padding: 4px;
+    margin-bottom: 10px;
+    background: none;
+    border: 1px solid var(--primaria);
+    border-radius: var(--raio);
+    color: var(--texto);
+    text-align: center;
+}
