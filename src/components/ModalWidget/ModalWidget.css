@@ -1,37 +1,37 @@
-.modal__container{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 95%;
-    height: 95vh;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    background: var(--fundo-secundario);
-    color: var(--texto);
-    border: 1px solid var(--primaria);
-    border-radius: var(--raio);
-    outline: none;
-    transform: translate(-50%, -50%);
-    font-family: var(--fonte-ui);
+.modal__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 95%;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: var(--fundo-secundario);
+  color: var(--texto);
+  border: 1px solid var(--primaria);
+  border-radius: var(--raio);
+  outline: none;
+  transform: translate(-50%, -50%);
+  font-family: var(--fonte-ui);
 }
 
-.modal__header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
 }
 
-.modal__fechar{
-    cursor: pointer;
+.modal__fechar {
+  cursor: pointer;
 }
 
-.modal__conteudo{
-    overflow: auto;
+.modal__conteudo {
+  overflow: auto;
 }
 
-.modal__titulo{
-    width: 100%;
-    text-align: center;
+.modal__titulo {
+  width: 100%;
+  text-align: center;
 }

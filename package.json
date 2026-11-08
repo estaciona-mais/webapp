@@ -14,9 +14,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint": "eslint src",
     "preview": "vite preview",
-    "fmt": "prettier . --write"
+    "fmt": "prettier src --write"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

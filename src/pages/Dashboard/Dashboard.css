@@ -1,52 +1,71 @@
 body {
-    background-color: var(--fundo-main);
+  background-color: var(--fundo-main);
 }
-
 
 /* .admin__layout{
     display: flex;
     min-height: 100vh;
 } */
 
-.admin__conteudo{
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
+.admin__conteudo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashboard__conteudo {
-    display: grid;
-    gap: 10px;
-    padding: 0 20px 10px 20px;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-areas:
-        "MAPA MAPA MAPA MAPA MAPA MAPA MAPA MAPA VAGA VAGA VAGA VAGA"
-        "MAPA MAPA MAPA MAPA MAPA MAPA MAPA MAPA HISTORICO HISTORICO HISTORICO HISTORICO"
-        "CLIMA CLIMA CLIMA ANUNCIOS ANUNCIOS ANUNCIOS ANUNCIOS ANUNCIOS PAGAMENTO PAGAMENTO PAGAMENTO PAGAMENTO";
+  display: grid;
+  gap: 10px;
+  padding: 0 20px 10px 20px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "MAPA MAPA MAPA MAPA MAPA MAPA MAPA MAPA VAGA VAGA VAGA VAGA"
+    "MAPA MAPA MAPA MAPA MAPA MAPA MAPA MAPA HISTORICO HISTORICO HISTORICO HISTORICO"
+    "CLIMA CLIMA CLIMA ANUNCIOS ANUNCIOS ANUNCIOS ANUNCIOS ANUNCIOS PAGAMENTO PAGAMENTO PAGAMENTO PAGAMENTO";
 }
 
 .admin__grid {
-    display: grid; 
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    padding: 0 20px 10px 20px;
-    gap: 10px;
-    grid-template-areas: 
-        "MAPA MAPA MAPA MAPA MAPA MAPA MAPA USUARIOS USUARIOS USUARIOS VAGAS VAGAS"
-        "MAPA MAPA MAPA MAPA MAPA MAPA MAPA RELATORIOS RELATORIOS RELATORIOS RELATORIOS RELATORIOS"
-        "HISTORICO HISTORICO HISTORICO HISTORICO HISTORICO HISTORICO VEICULOS VEICULOS VEICULOS VEICULOS VEICULOS VEICULOS"; 
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 0 20px 10px 20px;
+  gap: 10px;
+  grid-template-areas:
+    "MAPA MAPA MAPA MAPA MAPA MAPA MAPA USUARIOS USUARIOS USUARIOS VAGAS VAGAS"
+    "MAPA MAPA MAPA MAPA MAPA MAPA MAPA RELATORIOS RELATORIOS RELATORIOS RELATORIOS RELATORIOS"
+    "HISTORICO HISTORICO HISTORICO HISTORICO HISTORICO HISTORICO VEICULOS VEICULOS VEICULOS VEICULOS VEICULOS VEICULOS";
 }
 
-.area__grid{ grid-area: MAPA; }
-.area__vaga{ grid-area: VAGA; }
-.area__historico{ grid-area: HISTORICO; }
-.area__pagamento{ grid-area: PAGAMENTO; }
-.area__anuncios{ grid-area: ANUNCIOS; }
-.area__clima{ grid-area: CLIMA; }
+.area__grid {
+  grid-area: MAPA;
+}
+.area__vaga {
+  grid-area: VAGA;
+}
+.area__historico {
+  grid-area: HISTORICO;
+}
+.area__pagamento {
+  grid-area: PAGAMENTO;
+}
+.area__anuncios {
+  grid-area: ANUNCIOS;
+}
+.area__clima {
+  grid-area: CLIMA;
+}
 
-.area__vagas { grid-area: VAGAS; }
-.area__usuarios { grid-area: USUARIOS; }
-.area__relatorios { grid-area: RELATORIOS; }
-.area__veiculos { grid-area: VEICULOS; }
+.area__vagas {
+  grid-area: VAGAS;
+}
+.area__usuarios {
+  grid-area: USUARIOS;
+}
+.area__relatorios {
+  grid-area: RELATORIOS;
+}
+.area__veiculos {
+  grid-area: VEICULOS;
+}
