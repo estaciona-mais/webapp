@@ -1,4 +1,4 @@
-import Widget from "../../../components/Widget/Widget";
+import Widget from "#components/Widget/Widget";
 import ModalWidget from "#components/ModalWidget/ModalWidget.jsx";
 import {
   ClientesRegistrados,
@@ -11,91 +11,24 @@ import {
 import { useState } from "react";
 import TabelaSpreadsheet from "#components/Tabela/TabelaSpreadsheet.jsx";
 
-// PRA TESTES, REMOVER MAIS TARDE
-const veiculosRegistrados = [
-  {
-    tipo: "Carro",
-    cor: "Azul",
-    marca: "Hyundai",
-    modelo: "HB20",
-    placa: "QTP5F71",
-    ano: 2012,
-    clienteId: 842,
-  },
-  {
-    tipo: "Motocicleta",
-    cor: "Branco",
-    marca: "Honda",
-    modelo: "CG 160",
-    placa: "CXZ7B41",
-    ano: 2015,
-    clienteId: 157,
-  },
-  {
-    tipo: "Carro",
-    cor: "Preto",
-    marca: "Chevrolet",
-    modelo: "Onix",
-    placa: "BOK3C58",
-    ano: 2013,
-    clienteId: 319,
-  },
-  {
-    tipo: "Carro",
-    cor: "Cinza",
-    marca: "Toyota",
-    modelo: "Corolla",
-    placa: "OYW4R26",
-    ano: 1992,
-    clienteId: 564,
-  },
-];
 const conteudosVeiculos = [
   { conteudo: "tipo", titulo: "Tipo" },
   { conteudo: "cor", titulo: "Cor" },
-  { conteudo: "marca", titulo: "Marca" },
+  { conteudo: "fabricante", titulo: "Fabricante" },
   { conteudo: "modelo", titulo: "Modelo" },
   { conteudo: "placa", titulo: "Placa" },
   { conteudo: "ano", titulo: "Ano" },
   { conteudo: "clienteId", titulo: "Cliente ID" },
 ];
-const historico = [
-  {
-    entrada: "18:28, 17 Out",
-    placa: "QTP5F71",
-    vaga: "A-21",
-    clienteId: 842,
-    saida: "Não Registrada",
-  },
-  {
-    entrada: "17:42, 16 Out",
-    placa: "CXZ7B41",
-    vaga: "B-04",
-    clienteId: 157,
-    saida: "21:36, 16 Out",
-  },
-  {
-    entrada: "09:15, 15 Out",
-    placa: "BOK3C58",
-    vaga: "C-16",
-    clienteId: 319,
-    saida: "12:40, 15 Out",
-  },
-  {
-    entrada: "08:05, 15 Out",
-    placa: "OYW4R26",
-    vaga: "D-11",
-    clienteId: 564,
-    saida: "11:20, 15 Out",
-  },
-];
+
 const conteudosHistorico = [
-  { conteudo: "entrada", titulo: "Entrada" },
   { conteudo: "placa", titulo: "Placa" },
   { conteudo: "vaga", titulo: "Vaga" },
   { conteudo: "clienteId", titulo: "Cliente ID" },
+  { conteudo: "entrada", titulo: "Entrada" },
   { conteudo: "saida", titulo: "Saída" },
 ];
+
 const usuariosRegistrados = [
   {
     nome: "Maria Luisa da Silva",
@@ -126,6 +59,7 @@ const usuariosRegistrados = [
     clienteId: 564,
   },
 ];
+
 const conteudosUsuarios = [
   { conteudo: "nome", titulo: "Nome Completo" },
   { conteudo: "email", titulo: "Email" },
@@ -135,6 +69,9 @@ const conteudosUsuarios = [
 ];
 
 export default function DashboardAdmin() {
+  const [historico, setHistorico] = useState([]);
+  const [veiculos, setVeiculos] = useState([]);
+
   const [fullscreen, setFullscreen] = useState(null);
 
   return (
@@ -165,14 +102,22 @@ export default function DashboardAdmin() {
           className="area__veiculos"
           fullscreen={() => setFullscreen("veiculos")}
         >
-          <Veiculos />
+          <Veiculos
+            conteudos={conteudosVeiculos}
+            dados={veiculos}
+            update={(d) => setVeiculos(d)}
+          />
         </Widget>
         <Widget
           tituloWidget={"Histórico de Entradas e Saídas"}
           className="area__historico"
           fullscreen={() => setFullscreen("historico")}
         >
-          <EntradasSaidas />
+          <EntradasSaidas
+            conteudos={conteudosHistorico}
+            dados={historico}
+            update={(d) => setHistorico(d)}
+          />
         </Widget>
       </main>
       <ModalWidget
@@ -182,7 +127,7 @@ export default function DashboardAdmin() {
       >
         <TabelaSpreadsheet
           conteudos={conteudosVeiculos}
-          dados={veiculosRegistrados}
+          dados={veiculos}
           chave={"clienteId"}
         />
       </ModalWidget>
