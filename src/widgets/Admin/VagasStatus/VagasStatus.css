@@ -1,35 +1,37 @@
-.status__conteudo{
-    width: 100%;
+.status__conteudo {
+  width: 100%;
 }
 
-.titulo__vaga{
-    /* border: 1px solid var(--primaria); */
-    border-radius: var(--raio);
-    padding: 5px;
+.titulo__vaga {
+  /* border: 1px solid var(--primaria); */
+  border-radius: var(--raio);
+  padding: 5px;
 }
 
-.header__vaga{
-    text-align: center;
-    font-size: 10px;
-    font-weight: bolder;
+.header__vaga {
+  text-align: center;
+  font-size: 10px;
+  font-weight: bolder;
 }
 
-.status__vaga, .porcentagem__vaga{
-    font-size: 16px;
-    font-weight: bolder;
-    text-align: center;
+.status__vaga,
+.porcentagem__vaga {
+  font-size: 16px;
+  font-weight: bolder;
+  text-align: center;
 }
 
-.conteudo__vaga{
-    margin-top: 10px;
-    /* border: 1px solid var(--primaria); */
-    border-radius: var(--raio);
-    padding: 5px;
-    height: 85%;
-    display: inherit;
-    align-content: center;
+.conteudo__vaga {
+  margin-top: 10px;
+  /* border: 1px solid var(--primaria); */
+  border-radius: var(--raio);
+  padding: 5px;
+  height: 85%;
+  display: inherit;
+  align-content: center;
 }
 
-.porcentagem__vaga, .status__vaga{
-    padding: 10px;
+.porcentagem__vaga,
+.status__vaga {
+  padding: 10px;
 }

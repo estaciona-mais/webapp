@@ -18,7 +18,7 @@ import { enumParaObjeto } from "../../misc/utils";
 /**
  * Lista todos os veículos cadastrados.
  *
- * @returns {Veiculo[]} Lista de veículos.
+ * @returns {Promise<Veiculo[]>} Lista de veículos.
  */
 const listarVeiculos = async () => api.get("/api/veiculos");
 

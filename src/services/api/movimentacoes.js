@@ -6,7 +6,8 @@ import api from "./conn";
  *   placaVeiculo: string,
  *   codigoVaga: String,
  *   dataEntrada: Date,
- *   dataSaida: Date
+ *   dataSaida: Date,
+ *   clienteId: number
  * }} Movimentacao
  */
 
@@ -14,19 +15,21 @@ import api from "./conn";
  * Lista todas as movimentações, opcionalmente com um limite.
  *
  * @param {number?} limite - quantidade de resultados.
- * @returns {Movimentacao[]} Lista de movimentações.
+ * @returns {Promise<Movimentacao[]>} Lista de movimentações.
  */
 const listarRelatorio = async (limite) =>
-  api.get("/api/movimentacao/relatorio" + (limite ? `/?limite=${limite}` : ""));
+  api.get(
+    "/api/movimentacoes/relatorio" + (limite ? `/?limite=${limite}` : ""),
+  );
 
 /**
  * Lista todas as movimentações relacionadas a um cliente.
  *
  * @param {number} clienteId - id do cliente.
- * @returns {Movimentacao[]} Lista de movimentações.
+ * @returns {Promise<Movimentacao[]>} Lista de movimentações.
  */
 const listarHistoricoCliente = async (clienteId) =>
-  api.post("/api/movimentacao/cliente", { clienteId });
+  api.post("/api/movimentacoes/cliente", { clienteId });
 
 /**
  * Registra a entrada de um veículo.
@@ -36,7 +39,11 @@ const listarHistoricoCliente = async (clienteId) =>
  * @param {number} numeroVaga - Número da vaga ocupada.
  */
 const registrarEntrada = async (placaVeiculo, zonaVaga, numeroVaga) =>
-  api.post("/api/movimentacao/entrada", { placaVeiculo, zonaVaga, numeroVaga });
+  api.post("/api/movimentacoes/entrada", {
+    placaVeiculo,
+    zonaVaga,
+    numeroVaga,
+  });
 
 /**
  * Registra a saída de um veículo.
@@ -46,7 +53,7 @@ const registrarEntrada = async (placaVeiculo, zonaVaga, numeroVaga) =>
  * @param {number} numeroVaga - Número da vaga liberada.
  */
 const registrarSaida = async (placaVeiculo, zonaVaga, numeroVaga) =>
-  api.post("/api/movimentacao/saida", { placaVeiculo, zonaVaga, numeroVaga });
+  api.post("/api/movimentacoes/saida", { placaVeiculo, zonaVaga, numeroVaga });
 
 export {
   listarRelatorio,

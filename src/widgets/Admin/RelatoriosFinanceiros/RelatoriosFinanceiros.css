@@ -1,39 +1,39 @@
-.grafico__barra{
-    /* width: 100%; */
-    height: 145px;
+.grafico__barra {
+  /* width: 100%; */
+  height: 145px;
 }
 
-.relatorios__conteudo{
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    gap: 10px;
-    width: 100%;
+.relatorios__conteudo {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  gap: 10px;
+  width: 100%;
 }
 
-.relatorios__rrm{
-    /* border: 1px solid var(--destaque); */
-    border-radius: var(--raio); 
+.relatorios__rrm {
+  /* border: 1px solid var(--destaque); */
+  border-radius: var(--raio);
 }
 
-.relatorios__semestral{
-    /* border: 1px solid var(--primaria); */
-    border-radius: var(--raio);
+.relatorios__semestral {
+  /* border: 1px solid var(--primaria); */
+  border-radius: var(--raio);
 }
 
 .relatorios__rrm,
 .relatorios__semestral {
-    flex: 1;
-    min-width: 0;
+  flex: 1;
+  min-width: 0;
 }
 
-.procentagem__barra{
-    padding-left: 9%;
-    color: var(--primaria);
+.procentagem__barra {
+  padding-left: 9%;
+  color: var(--primaria);
 }
 
-.texto__relatorios{
-    text-align: center;
-    padding-top: 15px;
-    font-size: 16px;
+.texto__relatorios {
+  text-align: center;
+  padding-top: 15px;
+  font-size: 16px;
 }
