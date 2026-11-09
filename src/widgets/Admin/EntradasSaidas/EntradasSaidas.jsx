@@ -1,46 +1,44 @@
-import "./EntradasSaidas.css";
+import { useState, useEffect } from "react";
 import Tabela from "#src/components/Tabela/Tabela.jsx";
+import { listarRelatorio } from "#services/api/movimentacoes.js";
 
-const historico = [
-  {
-    entrada: "18:28, 17 Out",
-    placa: "QTP5F71",
-    vaga: "A-21",
-    clienteId: 842,
-    saida: "Não Registrada",
-  },
-  {
-    entrada: "17:42, 16 Out",
-    placa: "CXZ7B41",
-    vaga: "B-04",
-    clienteId: 157,
-    saida: "21:36, 16 Out",
-  },
-  {
-    entrada: "09:15, 15 Out",
-    placa: "BOK3C58",
-    vaga: "C-16",
-    clienteId: 319,
-    saida: "12:40, 15 Out",
-  },
-  {
-    entrada: "08:05, 15 Out",
-    placa: "OYW4R26",
-    vaga: "D-11",
-    clienteId: 564,
-    saida: "11:20, 15 Out",
-  },
-];
+import "./EntradasSaidas.css";
 
 const conteudos = [
-  { conteudo: "entrada", titulo: "Entrada" },
   { conteudo: "placa", titulo: "Placa" },
   { conteudo: "vaga", titulo: "Vaga" },
   { conteudo: "clienteId", titulo: "Cliente ID" },
+  { conteudo: "entrada", titulo: "Entrada" },
   { conteudo: "saida", titulo: "Saída" },
 ];
 
 export default function EntradasSaidas() {
+  const [historico, setHistorico] = useState([]);
+
+  useEffect(() => {
+    async function coletarMovimentacoes() {
+      const response = await listarRelatorio();
+      setHistorico(
+        response.map(
+          ({
+            placaVeiculo,
+            codigoVaga,
+            dataEntrada,
+            dataSaida,
+            clienteId,
+          }) => ({
+            placa: placaVeiculo,
+            vaga: codigoVaga,
+            entrada: new Date(dataEntrada).toLocaleString(),
+            saida: new Date(dataSaida).toLocaleString(),
+            clienteId,
+          }),
+        ),
+      );
+    }
+    coletarMovimentacoes();
+  }, []);
+
   return (
     <div className="historicoAdmin__conteudo">
       <Tabela conteudos={conteudos} dados={historico} key="placa" />
