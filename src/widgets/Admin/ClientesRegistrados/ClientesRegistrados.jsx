@@ -1,35 +1,20 @@
-import "./ClientesRegistrados.css";
+import { useState, useEffect } from "react";
 import { LineChart, Line, ResponsiveContainer, Tooltip, XAxis } from "recharts";
+import { listarClientes } from "#services/api/clientes.js";
+import { campoEnumParaTitulo } from "#misc/utils.js";
+
+import "./ClientesRegistrados.css";
 
 // TODO: ALTERAR POR VALORES DA API
-const clientesSemana = [
-  { dia: "Segunda", valor: 11 },
-  { dia: "Terça", valor: 13 },
-  { dia: "Quarta", valor: 15 },
-  { dia: "Quinta", valor: 14 },
-  { dia: "Sexta", valor: 13 },
-  { dia: "Sábado", valor: 25 },
-  { dia: "Domingo", valor: 27 },
-];
-
-const dadosCliente = {
-  total: 1298,
-  ativos: 1229,
-  inadimplentes: 48,
-  pendentes: 21,
-  cancelados: 113,
-};
-
-const status = [
-  { id: "ativos", status: "Ativos", valor: dadosCliente.ativos },
-  {
-    id: "inadimplentes",
-    status: "Inadimplentes",
-    valor: dadosCliente.inadimplentes,
-  },
-  { id: "pendentes", status: "Pendentes", valor: dadosCliente.pendentes },
-  { id: "cancelados", status: "Cancelados", valor: dadosCliente.cancelados },
-];
+// const clientesSemana = [
+//   { dia: "Segunda", valor: 11 },
+//   { dia: "Terça", valor: 13 },
+//   { dia: "Quarta", valor: 15 },
+//   { dia: "Quinta", valor: 14 },
+//   { dia: "Sexta", valor: 13 },
+//   { dia: "Sábado", valor: 25 },
+//   { dia: "Domingo", valor: 27 },
+// ];
 
 function Sparkline({ dados }) {
   return (
@@ -62,10 +47,88 @@ function Sparkline({ dados }) {
   );
 }
 
-const totalClientes = 1298;
-const novosClientes = clientesSemana.reduce((s, { valor }) => s + valor, 0);
+export default function ClientesRegistrados({ update }) {
+  const [totalClientes, setTotalClientes] = useState(0);
+  const [novosClientes, setNovosClientes] = useState(0);
+  const [clientesSemana, setClientesSemana] = useState([]);
+  const [statusClientes, setStatusClientes] = useState([]);
+  const [planos, setPlanos] = useState(null);
 
-export default function UsuariosRegistrados() {
+  useEffect(() => {
+    async function coletarClientes() {
+      const response = await listarClientes();
+      const total = response.length;
+
+      const semana = () => new Date() - 604800000;
+
+      setTotalClientes(total);
+      setNovosClientes(
+        response.filter((c) => new Date(c.criadoEm).getTime() > semana())
+          .length,
+      );
+
+      setClientesSemana(() => {
+        const dias = [
+          "Domingo",
+          "Segunda",
+          "Terça",
+          "Quarta",
+          "Quinta",
+          "Sexta",
+          "Sábado",
+        ];
+        return Array(7)
+          .fill(0)
+          .map((_, i) => ({
+            dia: dias[i],
+            valor: response.filter(
+              (c) =>
+                new Date(c.criadoEm).getTime() >= semana() &&
+                new Date(c.criadoEm).getDay() === i,
+            ).length,
+          }));
+      });
+
+      setStatusClientes(() => {
+        const ativos = response.filter((c) => c.status === "ATIVA").length;
+        const inativos = response.filter((c) => c.status === "INATIVA").length;
+        const cancelados = response.filter(
+          (c) => c.status === "CANCELADA",
+        ).length;
+
+        return [
+          { id: "ativos", status: "Ativos", valor: ativos },
+          {
+            id: "inativos",
+            status: "Inativos",
+            valor: inativos,
+          },
+          {
+            id: "cancelados",
+            status: "Cancelados",
+            valor: cancelados,
+          },
+        ];
+      });
+
+      setPlanos({
+        mensal: response.filter((c) => c.plano === "MENSAL"),
+        anual: response.filter((c) => c.plano !== "MENSAL"),
+      });
+
+      const clientes = response.filter((c) => c.plano !== null);
+      update(
+        clientes.map(({ nome, email, plano, clienteId }) => ({
+          nome,
+          email,
+          clienteId,
+          plano: campoEnumParaTitulo(plano),
+        })),
+      );
+    }
+    coletarClientes();
+  }, []);
+
   return (
     <div className="usuarios__conteudo">
       <div className="usuarios__informacoes">
@@ -85,17 +148,20 @@ export default function UsuariosRegistrados() {
         </div>
       </div>
       <div className="usuarios__planos">
+        {/* Por motivos desconhecidos, os seguintes valores causam erros de elemnto React inválido quando inseridos */}
         <p className="usuarios__plano">
-          <span className="plano__span">Mensal: </span> 973
+          <span className="plano__span">Mensal: </span>{" "}
+          <span>{/*planos?.mensal ?? 0*/} 6</span>
         </p>
         <p className="usuarios__plano">
-          <span className="plano__span">Anual: </span> 325
+          <span className="plano__span">Anual: </span>{" "}
+          <span>{/*planos?.anual ?? 0*/} 0</span>
         </p>
         {/* <p className="usuarios__plano"><span className="plano__span">Outros: </span> 65</p> */}
       </div>
       <div className="usuarios__assinaturas">
         <p className="usuarios__status">
-          {status.map((s) => (
+          {statusClientes.map((s) => (
             <span key={s.id} className={`usuarios__${s.id}`}>
               {/* espaço usando caractere invisivel */}
               {s.status} {s.valor}ㅤ

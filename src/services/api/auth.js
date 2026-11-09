@@ -27,9 +27,10 @@ import api from "./conn.js";
  * @typedef {{
  *   id: number,
  *   nome: string,
+ *   email: string,
  *   criadoEm: Date,
  *   aviso: string
- * }} ClienteResponse
+ * }} DadosCliente
  */
 
 /**
@@ -63,7 +64,7 @@ const logout = () => {
  * Cadastra um cliente no banco de dados através da API.
  *
  * @param {CadastroCliente} dadosCadastro - Dados de cadastro do cliente.
- * @returns {Promise<ClienteResponse>} Dados gerais do cliente.
+ * @returns {Promise<DadosCliente>} Dados gerais do cliente.
  */
 const cadastrarClienteApi = async (dadosCadastro) =>
   await api.post("/api/clientes", dadosCadastro);
@@ -72,7 +73,7 @@ const cadastrarClienteApi = async (dadosCadastro) =>
  * Cadastra um cliente no banco de dados através do Google.
  *
  * @param {CadastroCliente} dadosCadastro - Dados de cadastro do cliente.
- * @returns {Promise<ClienteResponse>} Dados gerais do cliente.
+ * @returns {Promise<DadosCliente>} Dados gerais do cliente.
  */
 const cadastrarClienteGoogle = async (dadosCadastro) =>
   await api.post("/api/clientes/google", dadosCadastro);

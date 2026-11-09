@@ -29,46 +29,15 @@ const conteudosHistorico = [
   { conteudo: "saida", titulo: "Saída" },
 ];
 
-const usuariosRegistrados = [
-  {
-    nome: "Maria Luisa da Silva",
-    email: "Marialuisa@hotmail.com",
-    senha: "abcdefgh",
-    plano: "mensal",
-    clienteId: 842,
-  },
-  {
-    nome: "João Gomes",
-    email: "Joaogomes@outlook.com",
-    senha: "12345678",
-    plano: "anual",
-    clienteId: 157,
-  },
-  {
-    nome: "Evelyn Pinheiro",
-    email: "EvelynP@gmail.com",
-    senha: "jfewnuNF",
-    plano: "mensal",
-    clienteId: 319,
-  },
-  {
-    nome: "Lucas Carvalho",
-    email: "Lucas@yahoo.com",
-    senha: "AbCd!!1",
-    plano: "mensal",
-    clienteId: 564,
-  },
-];
-
-const conteudosUsuarios = [
+const conteudosClientes = [
   { conteudo: "nome", titulo: "Nome Completo" },
   { conteudo: "email", titulo: "Email" },
-  { conteudo: "senha", titulo: "Senha" },
   { conteudo: "plano", titulo: "Plano" },
   { conteudo: "clienteId", titulo: "Cliente ID" },
 ];
 
 export default function DashboardAdmin() {
+  const [clientes, setClientes] = useState([]);
   const [historico, setHistorico] = useState([]);
   const [veiculos, setVeiculos] = useState([]);
 
@@ -86,7 +55,7 @@ export default function DashboardAdmin() {
           className="area__usuarios"
           fullscreen={() => setFullscreen("usuarios")}
         >
-          <ClientesRegistrados />
+          <ClientesRegistrados update={(d) => setClientes(d)} />
         </Widget>
         <Widget tituloWidget={"Vagas"} className="area__vagas">
           <Vagas />
@@ -148,8 +117,8 @@ export default function DashboardAdmin() {
         fechar={() => setFullscreen(null)}
       >
         <TabelaSpreadsheet
-          conteudos={conteudosUsuarios}
-          dados={usuariosRegistrados}
+          conteudos={conteudosClientes}
+          dados={clientes}
           chave={"clienteId"}
         />
       </ModalWidget>
