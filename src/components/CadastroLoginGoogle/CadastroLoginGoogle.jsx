@@ -4,7 +4,7 @@ import "./CadastroLoginGoogle.css";
 function CadastroLoginGoogle({ onSuccess, onError }) {
   return (
     <div className="cadastro_login_google">
-      <p>ou</p>
+      <p className="login-google__texto">ou</p>
       <GoogleLogin onSuccess={onSuccess} onError={onError} />
     </div>
   );

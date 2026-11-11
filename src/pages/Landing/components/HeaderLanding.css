@@ -1,6 +1,6 @@
 .cabecalho {
   padding: 20px 157px;
-  background-color: var(--fundo-main);
+  background-color: #e4e4e4;
 }
 
 .cabecalho__faixa {
@@ -15,6 +15,10 @@
   margin-right: 50px;
 }
 
+.header-landing__logo .logo{
+  color: #121316;
+}
+
 .navbar__landing {
   display: flex;
   gap: 100px;
@@ -24,7 +28,7 @@
 .navbar__landing a {
   white-space: nowrap;
   text-decoration: none;
-  color: var(--texto);
+  color: #121316;
   font-family: var(--fonte-ui);
   font-size: 14px;
   line-height: 28px;
@@ -49,10 +53,18 @@
   text-align: center;
 }
 
+.btn.btn__cadastro{
+  background-color: #4dc552;
+}
+
+.btn.btn__entrar{
+  color: #121316;
+}
+
 .btn.btn__entrar:hover {
   color: var(--destaque);
 }
 
 .btn.btn__cadastro:hover {
-  color: var(--fundo-main);
+  color: #e4e4e4;
 }

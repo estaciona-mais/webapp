@@ -1,12 +1,9 @@
-body {
-  background-color: var(--fundo-main);
-}
-
 .container__main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 120px 170px;
+  background-color: #e4e4e4;
 }
 
 .container__conta {
@@ -20,7 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   border-radius: var(--raio);
-  border: 2px solid var(--primaria);
+  border: 2px solid #4dc552;
   padding: 43px 24px 19px;
   width: 460px;
 }
@@ -34,7 +31,7 @@ body {
 }
 
 .form__input {
-  border: 1px solid var(--primaria);
+  border: 1px solid #4dc552;
   border-radius: var(--raio);
   width: 100%;
   padding: 10px 12px;
@@ -53,6 +50,10 @@ body {
   flex-direction: column;
   align-items: center;
   padding-right: 60px;
+}
+
+.container__logo .logo{
+  color: #121316;
 }
 
 .logo__texto {
@@ -75,7 +76,7 @@ body {
 
 .btn.btn__submit {
   margin-top: 14px;
-  border: 1px solid var(--primaria);
+  border: 1px solid #4dc552;
   width: 100%;
   justify-content: center;
   padding: 12px 20px;
@@ -85,19 +86,20 @@ body {
     background-color 0.3s ease-in-out,
     color 0.3s ease-in-out;
   margin-bottom: 10px;
+  color: #121316;
 }
 
 .btn.btn__submit:hover {
-  background-color: var(--primaria);
-  color: var(--fundo);
+  background-color: #4dc552;
+  color: #ffffff;
 }
 
 .nav__cadastro {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--fundo);
-  color: var(--fundo);
+  background-color: #e4e4e4;
+  color: #e4e4e4;
   font-family: var(--fonte-ui);
   font-size: 16px;
   width: 100%;
@@ -106,7 +108,7 @@ body {
 .nav__cadastro a {
   padding: 16px;
   text-decoration: none;
-  color: var(--texto);
+  color: #121316;
   font-family: var(--fonte-ui);
   transition: color 0.3s ease-in-out;
 }

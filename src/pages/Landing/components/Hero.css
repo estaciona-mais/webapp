@@ -16,7 +16,7 @@
 
 .hero__titulo {
   font-family: var(--fonte-logo);
-  color: var(--fundo-main);
+  color: #e4e4e4;
   font-size: 64px;
   font-weight: bold;
   padding-bottom: 38px;
@@ -24,6 +24,6 @@
 
 .hero__subtitulo {
   font-family: var(--fonte-logo);
-  color: var(--fundo-main);
+  color: #e4e4e4;
   font-size: 32px;
 }

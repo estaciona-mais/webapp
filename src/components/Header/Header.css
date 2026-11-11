@@ -62,7 +62,7 @@
   gap: 5px;
 }
 
-.btn.btn__teste {
+/* .btn.btn__teste {
   padding: 10px;
   font-size: 12px;
   line-height: 14px;
@@ -74,10 +74,42 @@
 .btn.btn__teste:hover {
   background-color: var(--texto);
   color: var(--fundo-secundario);
-}
+} */
 
 .usuario__role {
   text-transform: capitalize;
+}
+
+.btn__logout{
+  margin-left: 20px;
+  color: var(--texto);
+  border-radius: var(--raio);
+  padding: 10px;
+  font-size: 12px;
+  line-height: 14px;
+  width: 100%;
+  background-color: var(--fundo-secundario);
+  border: 1px solid var(--texto);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn__logout:hover{
+  cursor: pointer;
+  background-color: var(--texto);
+  color: var(--fundo-secundario);
+}
+
+.header__menu{
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 10;
+  min-width: 75px;
+  padding: 6px;
+}
+
+.header__usuario .icone {
+  position: relative;
 }
 
 [data-theme="dark"] .header__faixa {

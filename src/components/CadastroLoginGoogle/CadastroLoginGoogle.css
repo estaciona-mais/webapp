@@ -6,3 +6,8 @@
   border-top: solid 1px var(--secundaria);
   padding: 1em 0;
 }
+
+.login-google__texto{
+  font-family: var(--fonte-ui);
+  margin-bottom: 10px;
+}

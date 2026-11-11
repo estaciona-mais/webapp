@@ -1,6 +1,6 @@
 .area__checkout {
   margin: auto 157px 68px;
-  background-color: var(--fundo-main);
+  background-color: #e4e4e4;
   border-radius: var(--raio);
 }
 
@@ -21,13 +21,13 @@
 .vagas__texto {
   font-size: 16px;
   font-family: var(--fonte-logo);
-  color: var(--texto);
+  color: #121316;
 }
 
 .vagas__display {
   font-size: 50px;
   font-family: var(--fonte-logo);
-  color: var(--primaria);
+  color: #4dc552;
   padding-top: 3px;
 }
 
@@ -46,7 +46,7 @@
   width: 266px;
   height: 75px;
   padding: 10px 15px 10px 40px;
-  color: var(--fundo-main);
+  color: #e4e4e4;
   font-size: 28px;
   font-family: var(--fonte-logo);
 }
