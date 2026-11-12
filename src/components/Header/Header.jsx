@@ -20,18 +20,6 @@ export default function Header({ role, setRole, tema, mudarTema }) {
           <Logo />
         </div>
         <div className="header__conteudo">
-          <div className="header__testes">
-            {/* Botão temporário pra testes */}
-            <button
-              className="btn btn__teste"
-              onClick={() => setRole("cliente")}
-            >
-              Ver dashboard usuário(TESTE)
-            </button>
-            <button className="btn btn__teste" onClick={() => setRole("admin")}>
-              Ver dashboard admin(TESTE)
-            </button>
-          </div>
           <div className="header_icones">
             <div className="icone" onClick={mudarTema}>
               {tema === "dark" ? <Sun /> : <Moon />}
