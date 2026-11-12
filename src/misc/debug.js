@@ -1,6 +1,8 @@
+const isDevelopment = () => process.env.NODE_ENV === "development";
+
 const storedDebug = JSON.parse(localStorage.getItem("DEBUG"));
 
-const DEBUG = process.env.NODE_ENV === "development" && {
+const DEBUG = isDevelopment && {
   ativo: storedDebug?.ativo ?? null,
   opts: {
     form: storedDebug?.opts.form ?? true,
@@ -8,51 +10,53 @@ const DEBUG = process.env.NODE_ENV === "development" && {
   },
 };
 
-const dadosIniciaisCliente = DEBUG?.ativo
-  ? {
-      nome: "Usuário Teste",
-      email: gerarEmail(),
-      senha: "testeteste",
-      confirmarSenha: "testeteste",
-      plano: 3,
-      provider: "LOCAL",
-      providerId: "",
-      credential: "",
-    }
-  : {
-      nome: "",
-      email: "",
-      senha: "",
-      confirmarSenha: "",
-      plano: localStorage.getItem("plano") ?? 1,
-      provider: "LOCAL",
-      providerId: "",
-      credential: "",
-    };
+const dadosIniciaisCliente =
+  isDevelopment() && DEBUG?.ativo
+    ? {
+        nome: "Usuário Teste",
+        email: gerarEmail(),
+        senha: "testeteste",
+        confirmarSenha: "testeteste",
+        plano: 3,
+        provider: "LOCAL",
+        providerId: "",
+        credential: "",
+      }
+    : {
+        nome: "",
+        email: "",
+        senha: "",
+        confirmarSenha: "",
+        plano: localStorage.getItem("plano") ?? 1,
+        provider: "LOCAL",
+        providerId: "",
+        credential: "",
+      };
 
-const dadosIniciaisVeiculo = DEBUG?.ativo
-  ? {
-      tipo: "Carro",
-      cor: "Preto",
-      fabricante: "Toyota",
-      modelo: "Corolla",
-      placa: gerarPlacaDeVeiculo(),
-      ano: 2008,
-      observacao: "",
-    }
-  : {
-      tipo: "Carro",
-      cor: "Preto",
-      fabricante: "",
-      modelo: "",
-      placa: "",
-      ano: null,
-      observacao: "",
-    };
+const dadosIniciaisVeiculo =
+  isDevelopment() && DEBUG?.ativo
+    ? {
+        tipo: "Carro",
+        cor: "Preto",
+        fabricante: "Toyota",
+        modelo: "Corolla",
+        placa: gerarPlacaDeVeiculo(),
+        ano: 2008,
+        observacao: "",
+      }
+    : {
+        tipo: "Carro",
+        cor: "Preto",
+        fabricante: "",
+        modelo: "",
+        placa: "",
+        ano: null,
+        observacao: "",
+      };
 
 function log(...args) {
-  if (!DEBUG?.ativo || !DEBUG?.opts.logs) return;
-  console.log(args);
+  if (!isDevelopment() || !DEBUG?.ativo || !DEBUG?.opts.logs) return;
+  console.log(...args);
 }
 
 function gerarPlacaDeVeiculo() {
@@ -69,7 +73,7 @@ function gerarEmail() {
   return `teste${Math.floor(Math.random() * new Date().getTime())}@mail.com`;
 }
 
-if (process.env.NODE_ENV === "development") {
+if (isDevelopment()) {
   localStorage.setItem("DEBUG", JSON.stringify(DEBUG));
 }
 
