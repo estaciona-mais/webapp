@@ -13,7 +13,7 @@ export default function Dashboard({ tema, mudarTema }) {
   return (
     <div>
       {header}
-      {role === "admin" ? <DashboardAdmin /> : <DashboardUsuario />}
+      {role === "ADMIN" ? <DashboardAdmin /> : <DashboardUsuario />}
     </div>
   );
 }
